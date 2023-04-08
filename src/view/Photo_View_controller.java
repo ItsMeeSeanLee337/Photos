@@ -21,5 +21,11 @@ public class Photo_View_controller {
 
     @FXML
     private Label TagLabel;
+    // BUG: Currently it is only possible to display a single tag, the application should be able to dynamicaly display as many tags as the user attributes
 
+    @FXML
+    private void returnToAlbum()
+    {
+        // TODO: Exit from the photo view back to the album view
+    }
 }
