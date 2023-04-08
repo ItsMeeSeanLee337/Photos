@@ -27,6 +27,11 @@ public class PhotoApp implements Serializable
         return users.get(username);
     }
     
+    public static void removeUser(String username) 
+    {
+        users.remove(username);
+    }
+
     public static boolean userExists(String username) 
     {
         // Returns true if the "users" hashmap contains the given username, false otherwise
