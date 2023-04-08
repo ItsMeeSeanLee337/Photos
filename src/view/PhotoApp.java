@@ -16,13 +16,13 @@ public class PhotoApp implements Serializable
         users = new HashMap<>();
     }
     
-    public void addUser(String username) 
+    public static void addUser(String username) 
     {
         User user = new User(username);
         users.put(username, user);
     }
     
-    public User getUser(String username) 
+    public static User getUser(String username) 
     {
         return users.get(username);
     }
@@ -33,7 +33,7 @@ public class PhotoApp implements Serializable
         return users.containsKey(username);
     }
 
-    public class User implements Serializable 
+    public static class User implements Serializable 
     {
         
         private static final long serialVersionUID = 1L; // for serialization
@@ -47,35 +47,35 @@ public class PhotoApp implements Serializable
             albums = new HashMap<>();
         }
         
-        public void addAlbum(String albumName) 
+        public static void addAlbum(String albumName) 
         {
             Album album = new Album(albumName);
             albums.put(albumName, album);
         }
         
-        public Album getAlbum(String albumName) 
+        public static Album getAlbum(String albumName) 
         {
             return albums.get(albumName);
         }
         
-        public ArrayList<Album> getAlbums() 
+        public static ArrayList<Album> getAlbums() 
         {
             return new ArrayList<>(albums.values());
         }
         
-        public void removeAlbum(String albumName) 
+        public static void removeAlbum(String albumName) 
         {
             albums.remove(albumName);
         }
     }
     
-    public class Album implements Serializable 
+    public static class Album implements Serializable 
     {
         
         private static final long serialVersionUID = 1L; // for serialization
         
-        private String name;
-        private HashMap<String, Photo> photos;
+        private static String name;
+        private static HashMap<String, Photo> photos;
         
         public Album(String name) 
         {
@@ -83,41 +83,41 @@ public class PhotoApp implements Serializable
             photos = new HashMap<>();
         }
         
-        public void addPhoto(String photoName) 
+        public static void addPhoto(String photoName) 
         {
             Photo photo = new Photo(photoName);
             photos.put(photoName, photo);
         }
         
-        public ArrayList<Photo> getPhotos() 
+        public static ArrayList<Photo> getPhotos() 
         {
             return new ArrayList<>(photos.values());
         }
         
-        public void removePhoto(String photoName) 
+        public static void removePhoto(String photoName) 
         {
             photos.remove(photoName);
         }
         
-        public String getName() 
+        public static String getName() 
         {
             return name;
         }
     }
     
-    public class Photo implements Serializable 
+    public static class Photo implements Serializable 
     {
         
         private static final long serialVersionUID = 1L; // for serialization
         
-        private String name;
+        private static String name;
         
         public Photo(String name) 
         {
             this.name = name;
         }
         
-        public String getName() 
+        public static String getName() 
         {
             return name;
         }

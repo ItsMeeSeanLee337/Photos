@@ -22,4 +22,19 @@ public class Admin_Controller {
     @FXML
     private ChoiceBox<?> UserListChoiceBox;
 
+    @FXML
+    private void createUser(String username) 
+    {
+        // Check if the user already exists
+        if (PhotoApp.userExists(username)) 
+        {
+            System.out.println("User already exists.");
+            return;
+        }
+        else
+        {
+            PhotoApp.addUser(username);
+            return;
+        }
+    }
 }
