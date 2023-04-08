@@ -39,13 +39,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PhotosController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
             <Button fx:id="CreateUserButton" layoutX="272.0" layoutY="329.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Create User" />
             <Button fx:id="DeleteUserButton" layoutX="272.0" layoutY="233.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Delete User" />
-            <Button fx:id="LogoutButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Logout" />
+            <Button fx:id="LogoutButtonAdmin" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Logout" />
             <ChoiceBox fx:id="UserListChoiceBox" layoutX="151.0" layoutY="188.0" prefHeight="25.0" prefWidth="340.0" />
             <TextField fx:id="NewUserNameField" layoutX="246.0" layoutY="278.0" promptText="New User Name" />
             <Label layoutX="306.0" layoutY="157.0" text="User List" />

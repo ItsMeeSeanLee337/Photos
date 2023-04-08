@@ -39,27 +39,27 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PhotosController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
             <StackPane layoutX="79.0" layoutY="14.0" prefHeight="340.0" prefWidth="488.0">
                <children>
-                  <ImageView fitHeight="335.0" fitWidth="533.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="AlbumImageView" fitHeight="335.0" fitWidth="533.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@empty.jpg" />
                      </image>
                   </ImageView>
                </children>
             </StackPane>
-            <Button layoutX="12.0" layoutY="361.0" mnemonicParsing="false" text="Previous" />
-            <Button layoutX="585.0" layoutY="361.0" mnemonicParsing="false" text="Next" />
-            <Button layoutX="282.0" layoutY="361.0" mnemonicParsing="false" text="Detail View" />
-            <Button layoutX="12.0" layoutY="20.0" mnemonicParsing="false" text="Add New" />
-            <Button layoutX="112.0" layoutY="361.0" mnemonicParsing="false" text="Rename" />
-            <Button layoutX="183.0" layoutY="361.0" mnemonicParsing="false" text="Delete" />
-            <Button layoutX="388.0" layoutY="361.0" mnemonicParsing="false" text="Add Tag(s)" />
-            <Button layoutX="473.0" layoutY="361.0" mnemonicParsing="false" text="Remove Tag(s)" />
+            <Button fx:id="PreviousPhotoButton" layoutX="12.0" layoutY="361.0" mnemonicParsing="false" text="Previous" />
+            <Button fx:id="NextPhotoButton" layoutX="585.0" layoutY="361.0" mnemonicParsing="false" text="Next" />
+            <Button fx:id="DetailViewButton" layoutX="282.0" layoutY="361.0" mnemonicParsing="false" text="Detail View" />
+            <Button fx:id="AddNewPhotoButton" layoutX="12.0" layoutY="20.0" mnemonicParsing="false" text="Add New" />
+            <Button fx:id="RenamePhotoButton" layoutX="112.0" layoutY="361.0" mnemonicParsing="false" text="Rename" />
+            <Button fx:id="DeletePhotoButton" layoutX="183.0" layoutY="361.0" mnemonicParsing="false" text="Delete" />
+            <Button fx:id="AddTagsButton" layoutX="388.0" layoutY="361.0" mnemonicParsing="false" text="Add Tag(s)" />
+            <Button fx:id="RemoveTagsButton" layoutX="473.0" layoutY="361.0" mnemonicParsing="false" text="Remove Tag(s)" />
       </children>
     </AnchorPane>
   </children>
