@@ -1,3 +1,5 @@
+package view;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +8,7 @@ public class PhotoApp implements Serializable {
     
     private static final long serialVersionUID = 1L; // for serialization
     
-    private HashMap<String, User> users; // map of usernames to User objects
+    private static HashMap<String, User> users; // map of usernames to User objects
     
     public PhotoApp() {
         users = new HashMap<>();
@@ -21,6 +23,12 @@ public class PhotoApp implements Serializable {
         return users.get(username);
     }
     
+    public static boolean userExists(String username) 
+    {
+        // Returns true if the "users" hashmap contains the given username, false otherwise
+        return users.containsKey(username);
+    }
+
     public class User implements Serializable {
         
         private static final long serialVersionUID = 1L; // for serialization

@@ -6,8 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class login_controller 
@@ -41,25 +43,33 @@ public class login_controller
                 e.printStackTrace();
             }
         } 
-        else if (username.equals("stock")) 
+        else if (PhotoApp.userExists(username)) 
         {
-            // Switch to the stock album view
+            // Redirect to user's album view
             try 
             {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Album View.fxml"));
                 Parent root = loader.load();
+                Album_View_Controller albumViewController = loader.getController();
+                albumViewController.setPhotoApp(PhotoApp);
+                albumViewController.setUser(username);
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) LoginButton.getScene().getWindow();
                 stage.setScene(scene);
-                stage.show(); // TODO: Current implementation of this method just goes into the album view if it is stock or a user, need to find a way to decide which album to go into
-            } 
-            catch (IOException e) 
+                stage.show();
+            } catch (IOException e) 
             {
                 e.printStackTrace();
             }
         } 
         else 
-        { // Go to the user's album
+        {
+            // Show error message for invalid username
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid Username");
+            alert.setContentText("The username you entered does not exist.");
+            alert.showAndWait();
         }
     }
 }
