@@ -3,6 +3,7 @@ package view;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Calendar;
 
 public class PhotoApp implements Serializable 
 {
@@ -94,9 +95,10 @@ public class PhotoApp implements Serializable
             photos = new HashMap<>();
         }
         
-        public static void addPhoto(String photoName) 
+        public static void addPhoto(String photoName, Calendar date, String imageFilePath, String tagKey, String tagValue) 
         {
-            Photo photo = new Photo(photoName);
+            Photo photo = new Photo(photoName, date, imageFilePath);
+            photo.addTags(tagKey, tagValue);
             photos.put(photoName, photo);
         }
         
@@ -128,17 +130,31 @@ public class PhotoApp implements Serializable
         private static final long serialVersionUID = 1L; // for serialization
         
         private static String name;
-        private Date date;
-        private HashMap<String, String> tags;
-        
-        public Photo(String name) 
+        private static Calendar date;
+        private static HashMap<String, String> tags;
+        private static String imageFilePath;
+
+        public Photo(String name, Calendar date, String imageFilePath)  
         {
             this.name = name;
+            this.date = date;
+            this.tags = new HashMap<>();
+            this.imageFilePath = imageFilePath;
         }
         
         public static String getPhotoName() 
         {
             return name;
+        }
+
+        public static HashMap<String, String> getTags() 
+        {
+            return tags;
+        }
+
+        public static void addTags(String tagKey, String tagValue) 
+        {
+            tags.put(tagKey, tagValue);
         }
     }
 }
