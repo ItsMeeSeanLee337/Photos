@@ -154,14 +154,34 @@ public class PhotoApp implements Serializable
             return name;
         }
 
+        public static Calendar getDate()
+        {
+            return date;
+        }
+
         public static HashMap<String, String> getTags() 
         {
             return tags;
         }
 
+        public static String getImageFilePath()
+        {
+            return imageFilePath;
+        }
+
         public static void addTags(String tagKey, String tagValue) 
         {
             tags.put(tagKey, tagValue);
+        }
+
+        public static void removeTags(String tagKey, String tagValue)
+        {
+            tags.remove(tagKey, tagValue);
+        }
+
+        public static void renamePhoto(String newPhotoName)
+        {
+            name = newPhotoName;
         }
     }
 }
