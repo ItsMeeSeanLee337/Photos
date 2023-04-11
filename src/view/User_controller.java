@@ -39,7 +39,7 @@ public class User_controller {
 
         if (PhotoApp.User.albumExists(albumName))
         {
-            // Show error message for invalid username
+            // Show error message for album already existing
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Invalid Album Name");
@@ -55,7 +55,21 @@ public class User_controller {
     @FXML
     void DeleteAlbumButtonClicked(ActionEvent event) 
     {
-        // TODO: Delete album, album to be deleted is the one selected by the user in the choice box
+        String albumName = NameField.getText();
+
+        if (PhotoApp.User.albumExists(albumName))
+        {
+            PhotoApp.User.removeAlbum(albumName);
+        }
+        else
+        {
+            // Show error message for album not existing
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid Album Name");
+            alert.setContentText("This album does not exist");
+            alert.showAndWait();
+        }
     }
 
     @FXML
