@@ -128,6 +128,8 @@ public class PhotoApp implements Serializable
         private static final long serialVersionUID = 1L; // for serialization
         
         private static String name;
+        private Date date;
+        private HashMap<String, String> tags;
         
         public Photo(String name) 
         {

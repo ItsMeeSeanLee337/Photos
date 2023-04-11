@@ -1,9 +1,15 @@
 package view;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class Album_View_Controller {
 
@@ -54,9 +60,26 @@ public class Album_View_Controller {
     }
 
     @FXML
-    void DetailViewButtonCliced(ActionEvent event) 
+    void DetailViewButtonClicked(ActionEvent event) 
     {
-        // TODO: Goes to a detailed photo view of the current photo
+        // Go to Photo's detailed view
+        // BUG: Current iteration of this method relies on currently unimplemented methods
+        try 
+        {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Photo View.fxml"));
+            Parent root = loader.load();
+            Photo_View_controller photoViewController = loader.getController();
+            photoViewController.setPhotoApp(PhotoApp);
+            photoViewController.setPhoto("Current photo");
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) DetailViewButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } 
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -81,7 +104,7 @@ public class Album_View_Controller {
     @FXML
     void RenamePhotoButtonClicked(ActionEvent event) 
     {
-        // TODO: Rename current phot
+        // TODO: Rename current photo
         // BUG: Currently there is no field or way to rename a photo, need to fix ASAP
     }
 }
