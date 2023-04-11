@@ -25,6 +25,7 @@ public class login_controller
     @FXML
     void LoginButtonClicked(ActionEvent event) 
     {
+        // BUG: Current iteration of this method relies on currently unimplemented methods
         String username = UsernameField.getText();
         
         if (username.equals("admin")) 
@@ -58,7 +59,8 @@ public class login_controller
                 Stage stage = (Stage) LoginButton.getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
-            } catch (IOException e) 
+            } 
+            catch (IOException e) 
             {
                 e.printStackTrace();
             }
