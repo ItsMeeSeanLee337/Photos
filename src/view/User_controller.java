@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
+
 
 public class User_controller {
 
@@ -31,6 +34,21 @@ public class User_controller {
     @FXML
     private void createAlbum()
     {
+        String albumName = NameField.getText();
+
+        if (PhotoApp.User.albumExists(albumName))
+        {
+            // Show error message for invalid username
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid Album Name");
+            alert.setContentText("This album already exists");
+            alert.showAndWait();
+        }
+        else
+        {
+            PhotoApp.User.addAlbum(albumName);
+        }
         // TODO: Create album, name of album will be whatever is in NameField
     }
 

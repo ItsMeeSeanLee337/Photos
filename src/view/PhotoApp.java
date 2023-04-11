@@ -72,6 +72,12 @@ public class PhotoApp implements Serializable
         {
             albums.remove(albumName);
         }
+
+        public static boolean albumExists(String albumName) 
+        {
+            // Returns true if the "albums" hashmap contains the given album name, false otherwise
+            return albums.containsKey(albumName);
+        }
     }
     
     public static class Album implements Serializable 
@@ -104,9 +110,15 @@ public class PhotoApp implements Serializable
             photos.remove(photoName);
         }
         
-        public static String getName() 
+        public static String getAlbumName() 
         {
             return name;
+        }
+
+        public static boolean photoExists(String photoName) 
+        {
+            // Returns true if the "albums" hashmap contains the given album name, false otherwise
+            return photos.containsKey(photoName);
         }
     }
     
@@ -122,7 +134,7 @@ public class PhotoApp implements Serializable
             this.name = name;
         }
         
-        public static String getName() 
+        public static String getPhotoName() 
         {
             return name;
         }
