@@ -1,10 +1,16 @@
 package view;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class Admin_Controller 
 {
@@ -61,7 +67,24 @@ public class Admin_Controller
     @FXML
     void LogoutButtonAdminClicked(ActionEvent event) 
     {
-
+        // Redirect to login screen
+        // BUG: Current iteration of this method relies on currently unimplemented methods
+        try 
+        {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Parent root = loader.load();
+            login_controller loginController = loader.getController();
+            loginController.setPhotoApp(PhotoApp);
+            loginController.setUser(username);
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) LogoutButtonAdmin.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } 
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        }
     }
 
 }
