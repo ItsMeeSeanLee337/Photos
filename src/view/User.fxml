@@ -42,13 +42,13 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="CreateAlbumButton" layoutX="179.0" layoutY="230.0" mnemonicParsing="false" text="Create Album" />
+            <Button fx:id="CreateAlbumButton" layoutX="179.0" layoutY="230.0" mnemonicParsing="false" onAction="#CreateAlbumButtonClicked" text="Create Album" />
             <TextField fx:id="NameField" layoutX="179.0" layoutY="188.0" prefHeight="25.0" prefWidth="285.0" promptText="Name" />
-            <Button fx:id="RenameAlbumButton" layoutX="273.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Rename Album" />
-            <Button fx:id="DeleteAlbumButton" layoutX="375.0" layoutY="230.0" mnemonicParsing="false" text="Delete Album" />
+            <Button fx:id="RenameAlbumButton" layoutX="273.0" layoutY="230.0" mnemonicParsing="false" onAction="#RenameAlbumButtonClicked" prefHeight="25.0" prefWidth="98.0" text="Rename Album" />
+            <Button fx:id="DeleteAlbumButton" layoutX="375.0" layoutY="230.0" mnemonicParsing="false" onAction="#DeleteAlbumButtonClicked" text="Delete Album" />
             <ChoiceBox fx:id="AlbumChoiceBox" layoutX="78.0" layoutY="122.0" prefHeight="25.0" prefWidth="489.0" />
-            <Button fx:id="OpenAlbumButton" layoutX="280.0" layoutY="157.0" mnemonicParsing="false" text="Open Album" />
-            <Button fx:id="LogoutButtonUser" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Logout" />
+            <Button fx:id="OpenAlbumButton" layoutX="280.0" layoutY="157.0" mnemonicParsing="false" onAction="#OpenAlbumButtonClicked" text="Open Album" />
+            <Button fx:id="LogoutButtonUser" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#LogoutButtonUserClicked" text="Logout" />
          </children>
     </AnchorPane>
   </children>

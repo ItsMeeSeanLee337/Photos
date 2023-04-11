@@ -85,7 +85,7 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
             <TextField fx:id="UsernameField" layoutX="229.0" layoutY="151.0" promptText="User Name" />
-            <Button fx:id="LoginButton" layoutX="278.0" layoutY="187.0" mnemonicParsing="false" text="Login" />
+            <Button fx:id="LoginButton" layoutX="278.0" layoutY="187.0" mnemonicParsing="false" onAction="#LoginButtonClicked" text="Login" />
       </children>
     </AnchorPane>
   </children>

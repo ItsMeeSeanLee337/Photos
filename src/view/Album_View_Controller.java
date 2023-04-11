@@ -1,5 +1,6 @@
 package view;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -34,52 +35,44 @@ public class Album_View_Controller {
     private Button RenamePhotoButton;
 
     @FXML
-    private void AddNewPhoto()
-    {
+    void AddNewPhotoButtonClicked(ActionEvent event) {
         // TODO: Adds a new photo to the current album
     }
 
     @FXML
-    private void AddTags()
-    {
+    void AddTagsButtonClicked(ActionEvent event) {
         // TODO: Adds tag(s) to the current photo in the image view
         // BUG: Currently there is no way to input a tag to add or remove, need to fix ASAP
     }
 
     @FXML
-    private void DeletePhoto()
-    {
+    void DeletePhotoButtonClicked(ActionEvent event) {
         // TODO: Deletes the current photo from the album
     }
 
     @FXML
-    private void GoToDetailView()
-    {
+    void DetailViewButtonCliced(ActionEvent event) {
         // TODO: Goes to a detailed photo view of the current photo
     }
 
     @FXML
-    private void nextPhoto()
-    {
+    void NextPhotoButtonClicked(ActionEvent event) {
         // TODO: Goes to the next photo
     }
 
     @FXML
-    private void previousPhoto()
-    {
+    void PreviousPhotoButtonClicked(ActionEvent event) {
         // TODO: Goes to the previous photo
     }
 
     @FXML
-    private void RemoveTags()
-    {
+    void RemoveTagsButtonClicked(ActionEvent event) {
         // TODO: Removes tag(s) from current photo
         // BUG: Currently there is no way to input a tag to add or remove, need to fix ASAP
     }
 
     @FXML
-    private void RenamePhoto()
-    {
+    void RenamePhotoButtonClicked(ActionEvent event) {
         // TODO: Rename current phot
         // BUG: Currently there is no field or way to rename a photo, need to fix ASAP
     }

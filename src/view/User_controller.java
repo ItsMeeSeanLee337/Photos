@@ -1,5 +1,6 @@
 package view;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -32,7 +33,7 @@ public class User_controller {
     private Button RenameAlbumButton;
 
     @FXML
-    private void createAlbum()
+    void CreateAlbumButtonClicked(ActionEvent event) 
     {
         String albumName = NameField.getText();
 
@@ -49,31 +50,29 @@ public class User_controller {
         {
             PhotoApp.User.addAlbum(albumName);
         }
-        // TODO: Create album, name of album will be whatever is in NameField
     }
 
     @FXML
-    private void DeleteAlbum()
+    void DeleteAlbumButtonClicked(ActionEvent event) 
     {
         // TODO: Delete album, album to be deleted is the one selected by the user in the choice box
     }
 
     @FXML
-    private void Logout()
+    void LogoutButtonUserClicked(ActionEvent event) 
     {
         // TODO: Logout from the current user
     }
 
     @FXML
-    private void OpenAlbum()
+    void OpenAlbumButtonClicked(ActionEvent event) 
     {
         // TODO: Open album, album to be opened is the one selected by the user in the choice box
     }
 
     @FXML
-    private void RenameAlbum()
+    void RenameAlbumButtonClicked(ActionEvent event) 
     {
         // TODO: Rename the album, the album selected in the choice box will be renamed into whatever is currently in NameField
     }
-
 }

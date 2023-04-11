@@ -1,11 +1,13 @@
 package view;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
-public class Admin_Controller {
+public class Admin_Controller 
+{
 
     @FXML
     private Button CreateUserButton;
@@ -23,7 +25,7 @@ public class Admin_Controller {
     private ChoiceBox<?> UserListChoiceBox; // Need to figure out how to add all users to the choice box and have them selectable accordingly
 
     @FXML
-    private void createUser() 
+    void CreateUserButtonClicked(ActionEvent event)
     {
         String username = NewUserNameField.getText();
         // Check if the user already exists
@@ -40,7 +42,7 @@ public class Admin_Controller {
     }
 
     @FXML
-    private void deleteUser()
+    void DeleteUserButtonClicked(ActionEvent event) 
     {
         String username = UserListChoiceBox.getId(); // I don't think this is the way to get the username from the choice box but current placeholder
         // Check if the user already exists
@@ -54,5 +56,12 @@ public class Admin_Controller {
             System.out.println("User does not exist"); // Should pop an alert saying "User does not exist", can implement later
             return;
         }
-    } 
+    }
+
+    @FXML
+    void LogoutButtonAdminClicked(ActionEvent event) 
+    {
+
+    }
+
 }

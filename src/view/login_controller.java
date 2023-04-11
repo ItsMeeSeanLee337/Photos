@@ -2,6 +2,7 @@ package view;
 
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,7 +23,7 @@ public class login_controller
     private TextField UsernameField;
 
     @FXML
-    private void login() 
+    void LoginButtonClicked(ActionEvent event) 
     {
         String username = UsernameField.getText();
         

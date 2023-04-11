@@ -48,7 +48,7 @@
                   <Image url="@../../Downloads/empty.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="ReturnButton" layoutX="14.0" layoutY="367.0" mnemonicParsing="false" text="Return" />
+            <Button fx:id="ReturnButton" layoutX="14.0" layoutY="367.0" mnemonicParsing="false" onAction="#returnButtonClicked" text="Return" />
             <Label fx:id="CaptionLabel" layoutX="305.0" layoutY="14.0" text="Caption" />
             <Label fx:id="DateLabel" layoutX="82.0" layoutY="371.0" prefHeight="17.0" prefWidth="60.0" text="3/22/2023" />
             <Label fx:id="TagLabel" layoutX="159.0" layoutY="371.0" prefHeight="17.0" prefWidth="374.0" text="Tag" />
