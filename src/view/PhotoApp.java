@@ -74,6 +74,13 @@ public class PhotoApp implements Serializable
             albums.remove(albumName);
         }
 
+        public static void renameAlbum(String oldAlbumName, String newAlbumName) 
+        {
+            // TODO: Not sure if this way of renaming an album actually works, needs testing
+            PhotoApp.Album obj = albums.remove("oldAlbumName");
+            albums.put("newKey", obj);
+        }
+
         public static boolean albumExists(String albumName) 
         {
             // Returns true if the "albums" hashmap contains the given album name, false otherwise

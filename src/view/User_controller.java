@@ -104,12 +104,66 @@ public class User_controller {
     @FXML
     void OpenAlbumButtonClicked(ActionEvent event) 
     {
-        // TODO: Open album, album to be opened is the one selected by the user in the choice box
+        // BUG: Current iteration of this method relies on currently unimplemented methods
+        // Get the selected album name from the choice box
+        String albumName = (String) AlbumChoiceBox.getValue();
+
+        // Check if the selected album name is not null and exists in the user's album list
+        if (albumName != null && PhotoApp.User.albumExists(albumName)) 
+        {
+            // Redirect to the album screen
+            // BUG: Current iteration of this method relies on currently unimplemented methods
+            try 
+            {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Album View.fxml"));
+                Parent root = loader.load();
+                Album_View_Controller albumViewController = loader.getController();
+                albumViewController.setPhotoApp(PhotoApp);
+                albumViewController.setUser(username);
+                albumViewController.setAlbumName(albumName);
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) OpenAlbumButton.getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } 
+            catch (IOException e) 
+            {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
     void RenameAlbumButtonClicked(ActionEvent event) 
     {
-        // TODO: Rename the album, the album selected in the choice box will be renamed into whatever is currently in NameField
+        // Get the selected album name from the choice box
+        String oldAlbumName = (String) AlbumChoiceBox.getValue();
+
+        // Check if the selected album name is not null and exists in the user's album list
+        if (oldAlbumName != null && PhotoApp.User.albumExists(oldAlbumName)) 
+        {
+            // Get the new album name from the text field
+            String newAlbumName = NameField.getText();
+
+            // Check if the new album name is different from the current album name
+            if (!oldAlbumName.equals(newAlbumName)) 
+            {
+                // Check if the new album name already exists
+                if (PhotoApp.User.albumExists(newAlbumName))
+                {
+                    // Show error message for album already existing
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Invalid Album Name");
+                    alert.setContentText("An album with this name already exists");
+                    alert.showAndWait();
+                }
+                else
+                {
+                    // Rename the album
+                    PhotoApp.User.renameAlbum(oldAlbumName, newAlbumName);
+                }
+            }
+        }
     }
 }
