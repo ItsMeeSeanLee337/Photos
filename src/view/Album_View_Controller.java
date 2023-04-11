@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -41,6 +42,12 @@ public class Album_View_Controller {
     private Button RenamePhotoButton;
 
     @FXML
+    private TextField tagKey;
+
+    @FXML
+    private TextField tagValue;
+    
+    @FXML
     void AddNewPhotoButtonClicked(ActionEvent event) 
     {
         // TODO: Adds a new photo to the current album
@@ -49,8 +56,9 @@ public class Album_View_Controller {
     @FXML
     void AddTagsButtonClicked(ActionEvent event) 
     {
-        // TODO: Adds tag(s) to the current photo in the image view
-        // BUG: Currently there is no way to input a tag to add or remove, need to fix ASAP
+        String tagKeyString = tagKey.getText();
+        String tagValueString = tagValue.getText();
+        PhotoApp.Photo.addTags(tagKeyString, tagValueString);
     }
 
     @FXML
@@ -98,13 +106,14 @@ public class Album_View_Controller {
     void RemoveTagsButtonClicked(ActionEvent event) 
     {
         // TODO: Removes tag(s) from current photo
-        // BUG: Currently there is no way to input a tag to add or remove, need to fix ASAP
+        String tagKeyString = tagKey.getText();
+        String tagValueString = tagValue.getText();
+        PhotoApp.Photo.removeTags(tagKeyString, tagValueString);
     }
 
     @FXML
     void RenamePhotoButtonClicked(ActionEvent event) 
     {
         // TODO: Rename current photo
-        // BUG: Currently there is no field or way to rename a photo, need to fix ASAP
     }
 }
