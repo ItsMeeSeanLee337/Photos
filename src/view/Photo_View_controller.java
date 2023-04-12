@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -27,8 +28,7 @@ public class Photo_View_controller {
     private Button ReturnButton;
 
     @FXML
-    private Label TagLabel;
-    // BUG: Currently it is only possible to display a single tag, the application should be able to dynamicaly display as many tags as the user attributes
+    private ListView<?> ListOfTags;
 
     @FXML
     void returnButtonClicked(ActionEvent event) {

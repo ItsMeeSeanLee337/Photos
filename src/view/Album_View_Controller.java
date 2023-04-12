@@ -48,6 +48,9 @@ public class Album_View_Controller {
     private TextField tagValue;
     
     @FXML
+    private TextField photoName;
+    
+    @FXML
     void AddNewPhotoButtonClicked(ActionEvent event) 
     {
         // TODO: Adds a new photo to the current album
@@ -105,7 +108,6 @@ public class Album_View_Controller {
     @FXML
     void RemoveTagsButtonClicked(ActionEvent event) 
     {
-        // TODO: Removes tag(s) from current photo
         String tagKeyString = tagKey.getText();
         String tagValueString = tagValue.getText();
         PhotoApp.Photo.removeTags(tagKeyString, tagValueString);
@@ -114,6 +116,7 @@ public class Album_View_Controller {
     @FXML
     void RenamePhotoButtonClicked(ActionEvent event) 
     {
-        // TODO: Rename current photo
+        String photoNameString = photoName.getText();
+        PhotoApp.Photo.renamePhoto(photoNameString);
     }
 }
