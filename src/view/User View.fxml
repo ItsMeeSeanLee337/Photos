@@ -49,6 +49,7 @@
             <ChoiceBox fx:id="AlbumChoiceBox" layoutX="78.0" layoutY="122.0" prefHeight="25.0" prefWidth="489.0" />
             <Button fx:id="OpenAlbumButton" layoutX="280.0" layoutY="157.0" mnemonicParsing="false" onAction="#OpenAlbumButtonClicked" text="Open Album" />
             <Button fx:id="LogoutButtonUser" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#LogoutButtonUserClicked" text="Logout" />
+            <Button fx:id="SearchPhotosButton" layoutX="179.0" layoutY="265.0" mnemonicParsing="false" onAction="#SearchPhotosButtonClicked" prefHeight="25.0" prefWidth="285.0" text="Search photos" />
          </children>
     </AnchorPane>
   </children>

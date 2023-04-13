@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -78,18 +79,10 @@ public class Album_View_Controller
     @FXML
     private Button DetailViewButton;
     /**
-     * Button to go to next photo
+     * ListView to display all photos in the album
      */
     @FXML
-    private Button NextPhotoButton;
-    /**
-     * Button to go to previous photo
-     */
-    @FXML
-    private Button PreviousPhotoButton;
-    /**
-     * Button to remove tag(s)
-     */
+    private ListView<Photo> photoListView;
     @FXML
     private Button RemoveTagsButton;
     /**

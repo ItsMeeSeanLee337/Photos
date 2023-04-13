@@ -1,7 +1,12 @@
 package view;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.HashMap;
+
+import javafx.scene.image.Image;
+
 import java.util.Calendar;
 /**
  * Photos object class
@@ -29,17 +34,23 @@ public class Photo
      */
     private String imageFilePath;
     /**
+     * Photo itself
+     */
+    private Image image; // I think this is how you get an actual image in the photo but not sure, need to test it out
+    /**
      * Constructor, Initializes name, date, and path and creates a hashmap for {@link #tags tags}
      * @param name {@link #name name}
      * @param date {@link #date date}
      * @param imageFilePath {@link #imageFilePath filepath}
+     * @throws FileNotFoundException
      */
-    public Photo(String name, Calendar date, String imageFilePath)  
+    public Photo(String name, Calendar date, String imageFilePath) throws FileNotFoundException  
     {
         this.name = name;
         this.date = date;
         this.tags = new HashMap<>();
         this.imageFilePath = imageFilePath;
+        image = new Image(new FileInputStream(imageFilePath));
     }
     /**
      * Retrieves name of this photo

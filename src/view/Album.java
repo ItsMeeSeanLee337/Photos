@@ -1,5 +1,6 @@
 package view;
 
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -36,8 +37,9 @@ public class Album
      * @param imageFilePath Photo's path
      * @param tagKey Photo's tagkey
      * @param tagValue Photo's tagvalue
+     * @throws FileNotFoundException
      */
-    public void addPhoto(String photoName, Calendar date, String imageFilePath, String tagKey, String tagValue) 
+    public void addPhoto(String photoName, Calendar date, String imageFilePath, String tagKey, String tagValue) throws FileNotFoundException 
     {
         Photo photo = new Photo(photoName, date, imageFilePath);
         photo.addTags(tagKey, tagValue);

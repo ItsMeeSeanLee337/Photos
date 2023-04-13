@@ -1,6 +1,8 @@
 package view;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,7 +37,7 @@ public class User_View_Controller
      * Choicebox that holds albums
      */
     @FXML
-    private ChoiceBox<?> AlbumChoiceBox;
+    private ChoiceBox<String> AlbumChoiceBox;
     /**
      * Button to create new album
      */
@@ -66,6 +68,20 @@ public class User_View_Controller
      */
     @FXML
     private Button RenameAlbumButton;
+    /**
+     * Button to search through photos in each album
+     */
+    @FXML
+    private Button SearchPhotosButton;
+
+    @FXML
+    private void initialize() 
+    {
+        // I think that this method of setting the choice box to all album names works but not sure, need to test
+        List<String> allAlbumNames = currentUser.getAllAlbumsNames();
+        AlbumChoiceBox.getItems().addAll(allAlbumNames);
+    }
+
     /**
      * Creates new album with the name specified in the {@link #NameField NameField} Textfield
      * @param event Button clicked
@@ -205,5 +221,12 @@ public class User_View_Controller
                 }
             }
         }
+    }
+    
+    @FXML
+    void SearchPhotosButtonClicked(ActionEvent event) 
+    {
+        // TODO: This should search through all photos in each album according to criteria
+        // We will likely have to create a seperate view for searching through photos so clicking this button will just redirect to that view
     }
 }

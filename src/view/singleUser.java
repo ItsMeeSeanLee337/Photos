@@ -1,6 +1,7 @@
 package view;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 /**
  * SingleUser object class
  */
@@ -59,6 +60,16 @@ public class singleUser
     {
         return albums;
     }
+    public ArrayList<String> getAllAlbumsNames() 
+    {
+        ArrayList<String> allAlbumNames = new ArrayList<String>();
+        for (Album album : albums)
+        {
+            allAlbumNames.add(album.getAlbumName());
+        }
+        return allAlbumNames;
+    }
+    
     /**
      * Removes specified album
      * @param albumName album to be removed

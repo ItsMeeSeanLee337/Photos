@@ -1,6 +1,8 @@
 package view;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,7 +42,16 @@ public class Admin_Controller
      * Choicebox containing a list of users
      */
     @FXML
-    private ChoiceBox<?> UserListChoiceBox; // Need to figure out how to add all users to the choice box and have them selectable accordingly
+    private ChoiceBox<String> UserListChoiceBox;
+
+    @FXML
+    private void initialize() 
+    {
+        // I think that this method of setting the choice box to all usernames works but not sure, need to test
+        List<String> allUsernames = new ArrayList<String>(Users.getAllUsers().keySet());
+        UserListChoiceBox.getItems().addAll(allUsernames);
+    }
+    // Need to figure out how to add all users to the choice box and have them selectable accordingly
     /**
      * Creates user with the parameters input into the {@link #UserListChoiceBox UserListChoiceBox} 
      * @param event Button clicked
@@ -58,6 +69,7 @@ public class Admin_Controller
         else
         {
             Users.addUser(username);
+            UserListChoiceBox.getItems().add(username);
             return;
         }
     }
@@ -73,6 +85,7 @@ public class Admin_Controller
         if (Users.userExists(username)) 
         {
             Users.removeUser(username);
+            UserListChoiceBox.getItems().remove(username);
             return;
         }
         else

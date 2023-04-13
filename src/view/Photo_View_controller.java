@@ -57,7 +57,7 @@ public class Photo_View_controller
      * Label to hold photo title
      */
     @FXML
-    private Label CaptionLabel;
+    private Label photoName;
     /**
      * Label to hold photo date
      */
@@ -83,7 +83,8 @@ public class Photo_View_controller
      * @param event Button clicked
      */
     @FXML
-    void returnButtonClicked(ActionEvent event) {
+    void returnButtonClicked(ActionEvent event) 
+    {
         // Redirect to user's album view
         // BUG: Current iteration of this method relies on currently unimplemented methods
         try 

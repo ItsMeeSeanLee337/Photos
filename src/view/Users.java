@@ -59,4 +59,9 @@ public class Users
         // Returns true if the "users" hashmap contains the given username, false otherwise
         return users.containsKey(username);
     }
+
+    public static HashMap getAllUsers()
+    {
+        return users;
+    }
 }
