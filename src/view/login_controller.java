@@ -12,16 +12,29 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-
+/**
+ * Controller for the login view
+ */
 public class login_controller 
 {
-
+    /**
+     * Loginview is the initial stage
+     */
+    Stage mainStage;
+    /**
+     * Button to initiate login to user inputed into the {@link #UsernameField UsernameField} TextField
+     */
     @FXML
     private Button LoginButton;
-
+    /**
+     * Textfield for username input
+     */
     @FXML
     private TextField UsernameField;
-
+    /**
+     * Will either transition to admin or user view dependant on the input in the {@link #UsernameField UsernameField} TextField
+     * @param event Button Clicked
+     */
     @FXML
     void LoginButtonClicked(ActionEvent event) 
     {
@@ -39,22 +52,21 @@ public class login_controller
                 Stage stage = (Stage) LoginButton.getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
-            } 
+            }
             catch (IOException e) 
             {
                 e.printStackTrace();
             }
         } 
-        else if (PhotoApp.userExists(username)) 
+        else if (Users.userExists(username)) 
         {
             // Redirect to user's album view
             try 
             {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("Album View.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("User View.fxml"));
                 Parent root = loader.load();
-                Album_View_Controller albumViewController = loader.getController();
-                albumViewController.setPhotoApp(PhotoApp);
-                albumViewController.setUser(username);
+                User_View_Controller userViewController = loader.getController();
+                userViewController.setUser(username);
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) LoginButton.getScene().getWindow();
                 stage.setScene(scene);
@@ -75,4 +87,12 @@ public class login_controller
             alert.showAndWait();
         }
     }
+    /**
+     * Sets the mainstage to loginview
+     * @param stage this stage
+     */
+    public void setMainStage(Stage stage) 
+    {
+		mainStage = stage;
+	}
 }

@@ -51,8 +51,9 @@
             <Button fx:id="AddTagsButton" layoutX="388.0" layoutY="361.0" mnemonicParsing="false" onAction="#AddTagsButtonClicked" text="Add Tag(s)" />
             <ImageView fx:id="AlbumImageView" fitHeight="302.0" fitWidth="416.0" layoutX="119.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="RemoveTagsButton" layoutX="473.0" layoutY="361.0" mnemonicParsing="false" onAction="#RemoveTagsButtonClicked" text="Remove Tag(s)" />
-            <TextField fx:id="tagValue" layoutX="357.0" layoutY="328.0" prefHeight="25.0" prefWidth="178.0" promptText="Tag value to add or remove:" />
-            <TextField fx:id="tagKey" layoutX="119.0" layoutY="328.0" prefHeight="25.0" prefWidth="178.0" promptText="Tag key to add or remove" />
+            <TextField fx:id="tagValue" layoutX="431.0" layoutY="328.0" prefHeight="25.0" prefWidth="178.0" promptText="Tag value to add or remove:" />
+            <TextField fx:id="tagKey" layoutX="238.0" layoutY="328.0" prefHeight="25.0" prefWidth="178.0" promptText="Tag key to add or remove:" />
+            <TextField fx:id="photoName" layoutX="45.0" layoutY="328.0" prefHeight="25.0" prefWidth="178.0" promptText="Photo name:" />
       </children>
     </AnchorPane>
       <TextField prefHeight="77.0" prefWidth="149.0" />

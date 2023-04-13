@@ -12,24 +12,52 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
-public class Photo_View_controller {
-
+/**
+ * Controller for the photo view
+ */
+public class Photo_View_controller 
+{
+    /**
+     * Photo being viewed
+     */
+    Photo currentPhoto;
+    /**
+     * Sets the {@link #currentPhoto currentPhoto} to the inputed photo
+     * @param photo
+     */
+    public void setPhoto(Photo photo)
+    {
+        currentPhoto = photo;
+    }
+    /**
+     * Label to hold photo title
+     */
     @FXML
     private Label CaptionLabel;
-
+    /**
+     * Label to hold photo date
+     */
     @FXML
     private Label DateLabel;
-
+    /**
+     * DetailedImammgeView to hold photo
+     */
     @FXML
     private ImageView DetailedImageView;
-
+    /**
+     * Return button to transition back to album view
+     */
     @FXML
     private Button ReturnButton;
-
+    /**
+     * List of tagkey and tagvalues for the current photo
+     */
     @FXML
     private ListView<?> ListOfTags;
-
+    /**
+     * Returns the user to their album view
+     * @param event Button clicked
+     */
     @FXML
     void returnButtonClicked(ActionEvent event) {
         // Redirect to user's album view

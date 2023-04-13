@@ -11,51 +11,107 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
-public class Album_View_Controller {
-
+/**
+ * Controller for the album View
+ */
+public class Album_View_Controller 
+{
+    /**
+     * Current user logged in
+     */
+    singleUser currentUser;
+    /**
+     * Currently selected album
+     */
+    Album currentAlbum;
+    /**
+     * Sets the current user to the one sharing username
+     * @param username input username
+     */
+    public void setUser(singleUser username)
+    {
+        currentUser = username;
+    }
+    /**
+     * Retrieves the current users album with input albumname
+     * @param albumName input albumname
+     */
+    public void setAlbumName(String albumName)
+    {
+        currentUser.getAlbum(albumName);
+    }
+    /**
+     * Button to add new photo
+     */
     @FXML
     private Button AddNewPhotoButton;
-
+    /**
+     * Button to add new tag(s)
+     */
     @FXML
     private Button AddTagsButton;
-
+    /**
+     * Imageview containing photos
+     */
     @FXML
     private ImageView AlbumImageView;
-
+    /**
+     * Button to delete photos
+     */
     @FXML
     private Button DeletePhotoButton;
-
+    /**
+     * Button to open photo into detail view
+     */
     @FXML
     private Button DetailViewButton;
-
+    /**
+     * Button to go to next photo
+     */
     @FXML
     private Button NextPhotoButton;
-
+    /**
+     * Button to go to previous photo
+     */
     @FXML
     private Button PreviousPhotoButton;
-
+    /**
+     * Button to remove tag(s)
+     */
     @FXML
     private Button RemoveTagsButton;
-
+    /**
+     * Button to rename photos
+     */
     @FXML
     private Button RenamePhotoButton;
-
+    /**
+     * Textfield for tagkey input
+     */
     @FXML
     private TextField tagKey;
-
+    /**
+     * Textfield for tagvalue input
+     */
     @FXML
     private TextField tagValue;
-    
+    /**
+     * Textfield for photo name */   
     @FXML
     private TextField photoName;
-    
+    /**
+     * Adds a new photo to the current album
+     * @param event Button clicked
+     */   
     @FXML
     void AddNewPhotoButtonClicked(ActionEvent event) 
     {
         // TODO: Adds a new photo to the current album
     }
-
+    /**
+     * Adds tags to the current photo
+     * @param event Button clicked
+     */
     @FXML
     void AddTagsButtonClicked(ActionEvent event) 
     {
@@ -63,13 +119,19 @@ public class Album_View_Controller {
         String tagValueString = tagValue.getText();
         PhotoApp.Photo.addTags(tagKeyString, tagValueString);
     }
-
+    /**
+     * Deletes currently selected photo
+     * @param event Button clicked
+     */
     @FXML
     void DeletePhotoButtonClicked(ActionEvent event) 
     {
         // TODO: Deletes the current photo from the album
     }
-
+    /**
+     * Transitions view of photo to detail view
+     * @param event Button clicked
+     */
     @FXML
     void DetailViewButtonClicked(ActionEvent event) 
     {
@@ -92,19 +154,28 @@ public class Album_View_Controller {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Transitions to the next photo in the album
+     * @param event Button clicked
+     */
     @FXML
     void NextPhotoButtonClicked(ActionEvent event) 
     {
         // TODO: Goes to the next photo
     }
-
+    /**
+     * Transitions to the previous photo in the album
+     * @param event
+     */
     @FXML
     void PreviousPhotoButtonClicked(ActionEvent event) 
     {
         // TODO: Goes to the previous photo
     }
-
+    /**
+     * Removes tags specified in the {@link #tagKey tagKey} and {@link #tagValue tagValue} TextFields
+     * @param event Button clicked
+     */
     @FXML
     void RemoveTagsButtonClicked(ActionEvent event) 
     {
@@ -112,7 +183,10 @@ public class Album_View_Controller {
         String tagValueString = tagValue.getText();
         PhotoApp.Photo.removeTags(tagKeyString, tagValueString);
     }
-
+    /**
+     * Renames photo to string specified in the {@link #photoName photoname} textfield
+     * @param event
+     */
     @FXML
     void RenamePhotoButtonClicked(ActionEvent event) 
     {
