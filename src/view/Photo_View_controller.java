@@ -18,6 +18,14 @@ import javafx.stage.Stage;
 public class Photo_View_controller 
 {
     /**
+     * Current user logged in
+     */
+    singleUser currentUser;
+    /**
+     * Currently selected album
+     */
+    Album currentAlbum;
+    /**
      * Photo being viewed
      */
     Photo currentPhoto;
@@ -28,6 +36,22 @@ public class Photo_View_controller
     public void setPhoto(Photo photo)
     {
         currentPhoto = photo;
+    }
+    /**
+     * Sets the current user to the one sharing username
+     * @param username input username
+     */
+    public void setUser(singleUser username)
+    {
+        currentUser = username;
+    }
+    /**
+     * Retrieves the current users album with input albumname
+     * @param albumName input albumname
+     */
+    public void setAlbumName(String albumName)
+    {
+        currentUser.getAlbum(albumName);
     }
     /**
      * Label to hold photo title

@@ -25,6 +25,10 @@ public class Album_View_Controller
      */
     Album currentAlbum;
     /**
+     * Photo being viewed
+     */
+    Photo currentPhoto;
+    /**
      * Sets the current user to the one sharing username
      * @param username input username
      */
@@ -39,6 +43,14 @@ public class Album_View_Controller
     public void setAlbumName(String albumName)
     {
         currentUser.getAlbum(albumName);
+    }
+    /**
+     * Sets the {@link #currentPhoto currentPhoto} to the inputed photo
+     * @param photo
+     */
+    public void setPhoto(Photo photo)
+    {
+        currentPhoto = photo;
     }
     /**
      * Button to add new photo
@@ -117,7 +129,7 @@ public class Album_View_Controller
     {
         String tagKeyString = tagKey.getText();
         String tagValueString = tagValue.getText();
-        PhotoApp.Photo.addTags(tagKeyString, tagValueString);
+        currentPhoto.addTags(tagKeyString, tagValueString);
     }
     /**
      * Deletes currently selected photo
@@ -142,8 +154,9 @@ public class Album_View_Controller
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Photo View.fxml"));
             Parent root = loader.load();
             Photo_View_controller photoViewController = loader.getController();
-            photoViewController.setPhotoApp(PhotoApp);
-            photoViewController.setPhoto("Current photo");
+            photoViewController.setUser(currentUser);
+            photoViewController.setAlbumName(currentAlbum.getAlbumName());
+            photoViewController.setPhoto(currentPhoto);
             Scene scene = new Scene(root);
             Stage stage = (Stage) DetailViewButton.getScene().getWindow();
             stage.setScene(scene);
@@ -181,7 +194,7 @@ public class Album_View_Controller
     {
         String tagKeyString = tagKey.getText();
         String tagValueString = tagValue.getText();
-        PhotoApp.Photo.removeTags(tagKeyString, tagValueString);
+        currentPhoto.removeTags(tagKeyString, tagValueString);
     }
     /**
      * Renames photo to string specified in the {@link #photoName photoname} textfield
@@ -191,6 +204,6 @@ public class Album_View_Controller
     void RenamePhotoButtonClicked(ActionEvent event) 
     {
         String photoNameString = photoName.getText();
-        PhotoApp.Photo.renamePhoto(photoNameString);
+        currentPhoto.renamePhoto(photoNameString);
     }
 }
