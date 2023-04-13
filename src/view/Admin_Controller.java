@@ -70,6 +70,7 @@ public class Admin_Controller
         {
             Users.addUser(username);
             UserListChoiceBox.getItems().add(username);
+            NewUserNameField.clear();
             return;
         }
     }
@@ -80,12 +81,13 @@ public class Admin_Controller
     @FXML
     void DeleteUserButtonClicked(ActionEvent event) 
     {
-        String username = UserListChoiceBox.getId(); // I don't think this is the way to get the username from the choice box but current placeholder
+        String username = (String)UserListChoiceBox.getId(); // I don't think this is the way to get the username from the choice box but current placeholder
         // Check if the user already exists
         if (Users.userExists(username)) 
         {
-            Users.removeUser(username);
             UserListChoiceBox.getItems().remove(username);
+            Users.removeUser(username);
+            // This method doesn't fully work because it seems that the deleted user isn't removed from the choice box
             return;
         }
         else

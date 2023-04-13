@@ -1,16 +1,26 @@
 package view;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.List;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 /**
  * Controller for the album View
@@ -104,14 +114,65 @@ public class Album_View_Controller
      * Textfield for photo name */   
     @FXML
     private TextField photoName;
-    /**
+    public void initialize() 
+    {
+        // I have no idea if this way of displaying photos and names in the list view actually works
+        // Get the list of photos in the current album
+        List<Photo> photos = currentAlbum.getPhotos();
+    
+        // Create a new ObservableList to hold the photos for the ListView
+        ObservableList<Photo> observablePhotos = FXCollections.observableArrayList(photos);
+    
+        // Set the cell factory for the ListView to display both the photo and its name
+        photoListView.setCellFactory(param -> {
+            ImageView imageView = new ImageView();
+            Label nameLabel = new Label();
+            HBox hbox = new HBox(imageView, nameLabel);
+            hbox.setSpacing(10);
+            ListCell<Photo> cell = new ListCell<Photo>() 
+            {
+                @Override
+                protected void updateItem(Photo photo, boolean empty) 
+                {
+                    super.updateItem(photo, empty);
+                    if (empty || photo == null) 
+                    {
+                        setText(null);
+                        imageView.setImage(null);
+                        nameLabel.setText(null);
+                    } else {
+                        setText(photo.getPhotoName());
+                        imageView.setImage(photo.getImage());
+                        nameLabel.setText(photo.getPhotoName());
+                    }
+                }
+            };
+            cell.setGraphic(hbox);
+            return cell;
+        });
+        
+    
+        // Set the items of the ListView to the observable list of photos
+        photoListView.setItems(observablePhotos);
+    }
+    /*
      * Adds a new photo to the current album
      * @param event Button clicked
      */   
     @FXML
     void AddNewPhotoButtonClicked(ActionEvent event) 
     {
-        // TODO: Adds a new photo to the current album
+        FileChooser fileChooser = new FileChooser();
+        File selectedFile = fileChooser.showOpenDialog("Not sure what this paramter is supposed to be");
+        if (selectedFile != null) 
+        {
+            String name = selectedFile.getName();
+            Image image = new Image(selectedFile.toURI().toString());
+            // Need to find out how to get the date of last modification
+            Calendar date = "Current Date";
+            //Photo photo = new Photo(name, date, image);
+            currentAlbum.addPhoto(name, date, image);
+        }
     }
     /**
      * Adds tags to the current photo
@@ -132,6 +193,7 @@ public class Album_View_Controller
     void DeletePhotoButtonClicked(ActionEvent event) 
     {
         // TODO: Deletes the current photo from the album
+        // No way of knowing which photo is currently selected
     }
     /**
      * Transitions view of photo to detail view
@@ -159,24 +221,6 @@ public class Album_View_Controller
         {
             e.printStackTrace();
         }
-    }
-    /**
-     * Transitions to the next photo in the album
-     * @param event Button clicked
-     */
-    @FXML
-    void NextPhotoButtonClicked(ActionEvent event) 
-    {
-        // TODO: Goes to the next photo
-    }
-    /**
-     * Transitions to the previous photo in the album
-     * @param event
-     */
-    @FXML
-    void PreviousPhotoButtonClicked(ActionEvent event) 
-    {
-        // TODO: Goes to the previous photo
     }
     /**
      * Removes tags specified in the {@link #tagKey tagKey} and {@link #tagValue tagValue} TextFields

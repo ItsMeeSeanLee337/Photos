@@ -1,6 +1,5 @@
 package view;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -34,7 +33,6 @@ public class Photo
     /**
      * Path of photo
      */
-    private String imageFilePath;
     /**
      * Photo itself
      */
@@ -43,16 +41,14 @@ public class Photo
      * Constructor, Initializes name, date, and path and creates a hashmap for {@link #tags tags}
      * @param name {@link #name name}
      * @param date {@link #date date}
-     * @param imageFilePath {@link #imageFilePath filepath}
      * @throws FileNotFoundException
      */
-    public Photo(String name, Calendar date, String imageFilePath) throws FileNotFoundException  
+    public Photo(String name, Calendar date, Image image) throws FileNotFoundException  
     {
         this.name = name;
         this.date = date;
         this.tags = new HashMap<>();
-        this.imageFilePath = imageFilePath;
-        image = new Image(new FileInputStream(imageFilePath));
+        this.image = image;
     }
     /**
      * Retrieves name of this photo
@@ -69,6 +65,14 @@ public class Photo
     public Calendar getDate()
     {
         return date;
+    }
+    /**
+     * Retrieves Image of this photo
+     * @return {@link #image of this photo}
+     */
+    public Image getImage()
+    {
+        return image;
     }
     /**
      * Retrieves tags of this photo
@@ -92,14 +96,6 @@ public class Photo
             keyValuePairs.add(keyValuePair);
         }
         return keyValuePairs;
-    }
-    /**
-     * Retrieves filepath of this photo
-     * @return imageFilePath
-     */
-    public String getImageFilePath()
-    {
-        return imageFilePath;
     }
     /**
      * Adds new tag

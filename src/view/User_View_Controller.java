@@ -103,6 +103,7 @@ public class User_View_Controller
         else
         {
             currentUser.addAlbum(albumName);
+            NameField.clear();
         }
     }
     /**

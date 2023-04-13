@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import javafx.scene.image.Image;
 /**
  * Album object class
  */
@@ -39,10 +41,9 @@ public class Album
      * @param tagValue Photo's tagvalue
      * @throws FileNotFoundException
      */
-    public void addPhoto(String photoName, Calendar date, String imageFilePath, String tagKey, String tagValue) throws FileNotFoundException 
+    public void addPhoto(String photoName, Calendar date, Image image) throws FileNotFoundException 
     {
-        Photo photo = new Photo(photoName, date, imageFilePath);
-        photo.addTags(tagKey, tagValue);
+        Photo photo = new Photo(photoName, date, image);
         photos.add(photo);
     }
     /**
@@ -57,7 +58,7 @@ public class Album
      * Removes photo with the name imputed
      * @param photoName name of photo to be deleted
      */
-    public void removePhoto(String photoName) 
+    public void removePhoto(Photo photoName) 
     {
         photos.remove(photoName);
     }
@@ -82,7 +83,7 @@ public class Album
      * @param photoName Name of photo to search for
      * @return Boolean
      */
-    public boolean photoExists(String photoName) 
+    public boolean photoExists(Photo photoName) 
     {
         // Returns true if the "albums" hashmap contains the given album name, false otherwise
         return photos.contains(photoName);

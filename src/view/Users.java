@@ -1,8 +1,6 @@
 package view;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Calendar;
 /**
  * Users object class
  */
@@ -60,7 +58,7 @@ public class Users
         return users.containsKey(username);
     }
 
-    public static HashMap getAllUsers()
+    public static HashMap<String, singleUser> getAllUsers()
     {
         return users;
     }
