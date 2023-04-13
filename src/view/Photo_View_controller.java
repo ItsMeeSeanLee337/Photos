@@ -91,8 +91,9 @@ public class Photo_View_controller
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Album View.fxml"));
             Parent root = loader.load();
             Album_View_Controller albumViewController = loader.getController();
-            albumViewController.setPhotoApp(PhotoApp);
-            albumViewController.setUser(username);
+            albumViewController.setUser(currentUser);
+            albumViewController.setAlbumName(currentAlbum.getAlbumName());
+            albumViewController.setPhoto(currentPhoto);
             Scene scene = new Scene(root);
             Stage stage = (Stage) ReturnButton.getScene().getWindow();
             stage.setScene(scene);
