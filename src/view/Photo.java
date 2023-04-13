@@ -4,9 +4,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
 import javafx.scene.image.Image;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 /**
  * Photos object class
@@ -75,6 +77,21 @@ public class Photo
     public HashMap<String, String> getTags() 
     {
         return tags;
+    }
+    /**
+     * Retrieves tags of this photo, as an arraylist of strings in "key: value" format
+     * @return {@link #tags tags} of this photo
+     */
+    public ArrayList<String> getTagsAsString() 
+    {
+        // I think that this method should work but haven't tested yet, need to try it out
+        ArrayList<String> keyValuePairs = new ArrayList<>();
+        for (Map.Entry<String, String> entry : tags.entrySet()) 
+        {
+            String keyValuePair = entry.getKey() + ": " + entry.getValue();
+            keyValuePairs.add(keyValuePair);
+        }
+        return keyValuePairs;
     }
     /**
      * Retrieves filepath of this photo

@@ -1,6 +1,7 @@
 package view;
 
 import java.io.IOException;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -77,7 +78,14 @@ public class Photo_View_controller
      * List of tagkey and tagvalues for the current photo
      */
     @FXML
-    private ListView<?> ListOfTags;
+    private ListView<String> ListOfTags;
+    @FXML
+    private void initialize() 
+    {
+        // I think that this method of setting the choice box to all tags works but not sure, need to test
+        List<String> allTags = currentPhoto.getTagsAsString();
+        ListOfTags.getItems().addAll(allTags);
+    }
     /**
      * Returns the user to their album view
      * @param event Button clicked
