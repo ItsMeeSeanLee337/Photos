@@ -1,6 +1,7 @@
 package view;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
@@ -160,16 +161,17 @@ public class Album_View_Controller
      * @param event Button clicked
      */   
     @FXML
-    void AddNewPhotoButtonClicked(ActionEvent event) 
+    void AddNewPhotoButtonClicked(ActionEvent event) throws FileNotFoundException 
     {
+        // This method needs testing
         FileChooser fileChooser = new FileChooser();
-        File selectedFile = fileChooser.showOpenDialog("Not sure what this paramter is supposed to be");
+        File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) 
         {
             String name = selectedFile.getName();
             Image image = new Image(selectedFile.toURI().toString());
-            // Need to find out how to get the date of last modification
-            Calendar date = "Current Date";
+            Calendar date = Calendar.getInstance();
+            date.setTimeInMillis(selectedFile.lastModified());
             //Photo photo = new Photo(name, date, image);
             currentAlbum.addPhoto(name, date, image);
         }
@@ -203,7 +205,6 @@ public class Album_View_Controller
     void DetailViewButtonClicked(ActionEvent event) 
     {
         // Go to Photo's detailed view
-        // BUG: Current iteration of this method relies on currently unimplemented methods
         try 
         {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Photo View.fxml"));

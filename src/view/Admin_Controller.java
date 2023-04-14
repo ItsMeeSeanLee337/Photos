@@ -9,9 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 /**
  * Controller for the admin view
@@ -63,7 +65,11 @@ public class Admin_Controller
         // Check if the user already exists
         if (Users.userExists(username)) 
         {
-            System.out.println("User already exists."); // Should pop an alert saying "User already exists", can implement later
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid Username");
+            alert.setContentText("This username already exists");
+            alert.showAndWait();
             return;
         }
         else
@@ -83,7 +89,7 @@ public class Admin_Controller
     {
         String username = (String)UserListChoiceBox.getId(); // I don't think this is the way to get the username from the choice box but current placeholder
         // Check if the user already exists
-        if (Users.userExists(username)) 
+        if (Users.userExists(username) && !username.equals("Stock")) 
         {
             UserListChoiceBox.getItems().remove(username);
             Users.removeUser(username);
@@ -92,7 +98,11 @@ public class Admin_Controller
         }
         else
         {
-            System.out.println("User does not exist"); // Should pop an alert saying "User does not exist", can implement later
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid Username");
+            alert.setContentText("This user does not exist");
+            alert.showAndWait();
             return;
         }
     }

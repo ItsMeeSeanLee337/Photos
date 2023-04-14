@@ -1,6 +1,11 @@
 package view;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,12 +17,12 @@ import java.util.Calendar;
 /**
  * Photos object class
  */
-public class Photo
+public class Photo implements Serializable
 {
     /**
      * Long for serialization
      */
-    private static final long serialVersionUID = 1L; // for serialization
+    private static final long serialVersionUID = 1L; // for serialization, I think this variable is important and necessary
     /**
      * Name of photo
      */
@@ -122,5 +127,22 @@ public class Photo
     public void renamePhoto(String newPhotoName)
     {
         name = newPhotoName;
+    }
+
+    // I am not sure if the following methods for serializing and deserializing, also I don't know how to use them, must test 
+    public void writeToFile(String filename) throws IOException 
+    {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) 
+        {
+            oos.writeObject(this);
+        }
+    }
+
+    public static Photo readFromFile(String filename) throws IOException, ClassNotFoundException 
+    {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) 
+        {
+            return (Photo) ois.readObject();
+        }
     }
 }

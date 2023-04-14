@@ -38,7 +38,6 @@ public class login_controller
     @FXML
     void LoginButtonClicked(ActionEvent event) 
     {
-        // BUG: Current iteration of this method relies on currently unimplemented methods
         String username = UsernameField.getText();
         
         if (username.equals("admin")) 

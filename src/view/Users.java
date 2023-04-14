@@ -1,15 +1,20 @@
 package view;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 /**
  * Users object class
  */
-public class Users 
+public class Users implements Serializable
 {
     /**
      * Long for serialization
      */
-    private final long serialVersionUID = 1L; // for serialization
+    private final long serialVersionUID = 1L; // for serialization, I think this variable is important and necessary
     /**
      * Hashmap of users corresponding to their username
      */
@@ -58,8 +63,50 @@ public class Users
         return users.containsKey(username);
     }
 
+    /**
+     * Returns all users in the {@link #users users} hashmap
+     * @return HasMap<String, singleUser>
+     */
     public static HashMap<String, singleUser> getAllUsers()
     {
         return users;
+    }
+
+    // I am not sure if the following methods for serializing and deserializing, also I don't know how to use them, must test
+    /**
+     * Writes the Users object to a file using ObjectOutputStream
+     * @param fileName name of the file to write to
+     */
+    public static void writeToFile(String fileName) 
+    {
+        try 
+        {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName));
+            out.writeObject(users);
+            out.close();
+        } 
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Reads the Users object from a file using ObjectInputStream
+     * @param fileName name of the file to read from
+     */
+    public static void readFromFile(String fileName) 
+    {
+        try 
+        {
+
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName));
+            users = (HashMap<String, singleUser>) in.readObject();
+            in.close();
+        } 
+        catch (IOException | ClassNotFoundException e) 
+        {
+            e.printStackTrace();
+        }
     }
 }

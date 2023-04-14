@@ -1,15 +1,20 @@
 package view;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * SingleUser object class
  */
-public class singleUser 
+public class singleUser implements Serializable
 {
     /**
      * long for serialization
      */
-    private static final long serialVersionUID = 1L; // for serialization
+    private static final long serialVersionUID = 1L; // for serialization, I think this variable is important and necessary
     /**
      * Username of this user
      */
@@ -113,5 +118,22 @@ public class singleUser
             }
         }
         return false;
-    }    
+    }
+
+    // I am not sure if the following methods for serializing and deserializing, also I don't know how to use them, must test 
+    public void writeToFile(String filename) throws IOException 
+    {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) 
+        {
+            oos.writeObject(this);
+        }
+    }
+
+    public static singleUser readFromFile(String filename) throws IOException, ClassNotFoundException 
+    {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) 
+        {
+            return (singleUser) ois.readObject();
+        }
+    }
 }

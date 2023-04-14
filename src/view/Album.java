@@ -1,6 +1,11 @@
 package view;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -9,12 +14,12 @@ import javafx.scene.image.Image;
 /**
  * Album object class
  */
-public class Album 
+public class Album implements Serializable
 {
     /**
      * Long for serialization
      */
-    private static final long serialVersionUID = 1L; // for serialization
+    private static final long serialVersionUID = 1L; // for serialization, I think this variable is important and necessary
     /**
      * Name of Album
      */
@@ -87,5 +92,22 @@ public class Album
     {
         // Returns true if the "albums" hashmap contains the given album name, false otherwise
         return photos.contains(photoName);
+    }
+
+    // I am not sure if the following methods for serializing and deserializing, also I don't know how to use them, must test 
+    public void writeToFile(String filename) throws IOException 
+    {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) 
+        {
+            oos.writeObject(this);
+        }
+    }
+
+    public static Album readFromFile(String filename) throws IOException, ClassNotFoundException 
+    {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) 
+        {
+            return (Album) ois.readObject();
+        }
     }
 }

@@ -159,7 +159,6 @@ public class User_View_Controller
     @FXML
     void OpenAlbumButtonClicked(ActionEvent event) 
     {
-        // BUG: Current iteration of this method relies on currently unimplemented methods
         // Get the selected album name from the choice box
         String albumName = (String) AlbumChoiceBox.getValue();
 
@@ -167,7 +166,6 @@ public class User_View_Controller
         if (albumName != null && currentUser.albumExists(albumName)) 
         {
             // Redirect to the album screen
-            // BUG: Current iteration of this method relies on currently unimplemented methods
             try 
             {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Album View.fxml"));
