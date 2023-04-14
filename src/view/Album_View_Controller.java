@@ -128,35 +128,36 @@ public class Album_View_Controller
         ObservableList<Photo> observablePhotos = FXCollections.observableArrayList(photos);
     
         // Set the cell factory for the ListView to display both the photo and its name
-        photoListView.setCellFactory(param -> 
+        photoListView.setCellFactory(param ->
         {
             ImageView imageView = new ImageView();
-            Label nameLabel = new Label();
-            HBox hbox = new HBox(imageView, nameLabel);
+            HBox hbox = new HBox(imageView);
             hbox.setSpacing(10);
-            ListCell<Photo> cell = new ListCell<Photo>() 
+            Label nameLabel = new Label();
+            ListCell<Photo> cell = new ListCell<Photo>()
             {
                 @Override
-                protected void updateItem(Photo photo, boolean empty) 
+                protected void updateItem(Photo photo, boolean empty)
                 {
                     super.updateItem(photo, empty);
-                    if (empty || photo == null) 
+                    if (empty || photo == null)
                     {
                         setText(null);
                         imageView.setImage(null);
                         nameLabel.setText(null);
-                    } 
-                    else 
+                    }
+                    else
                     {
-                        setText(photo.getPhotoName());
+                        setText(null);
                         imageView.setImage(photo.getImage());
                         imageView.setPreserveRatio(true);
-                        imageView.setFitWidth(50); // Change the value to the desired width
-                        imageView.setFitHeight(50); // Change the value to the desired height
+                                imageView.setFitWidth(50); // Change the value to the desired width
+                                imageView.setFitHeight(50); // Change the value to the desired height
                         nameLabel.setText(photo.getPhotoName());
                     }
                 }
             };
+            hbox.getChildren().add(nameLabel);
             cell.setGraphic(hbox);
             return cell;
         });
@@ -191,35 +192,36 @@ public class Album_View_Controller
         ObservableList<Photo> observablePhotos = FXCollections.observableArrayList(photos);
     
         // Set the cell factory for the ListView to display both the photo and its name
-        photoListView.setCellFactory(param -> 
+        photoListView.setCellFactory(param ->
         {
             ImageView imageView = new ImageView();
-            Label nameLabel = new Label();
-            HBox hbox = new HBox(imageView, nameLabel);
+            HBox hbox = new HBox(imageView);
             hbox.setSpacing(10);
-            ListCell<Photo> cell = new ListCell<Photo>() 
+            Label nameLabel = new Label();
+            ListCell<Photo> cell = new ListCell<Photo>()
             {
                 @Override
-                protected void updateItem(Photo photo, boolean empty) 
+                protected void updateItem(Photo photo, boolean empty)
                 {
                     super.updateItem(photo, empty);
-                    if (empty || photo == null) 
+                    if (empty || photo == null)
                     {
                         setText(null);
                         imageView.setImage(null);
                         nameLabel.setText(null);
-                    } 
-                    else 
+                    }
+                    else
                     {
-                        setText(photo.getPhotoName());
+                        setText(null);
                         imageView.setImage(photo.getImage());
                         imageView.setPreserveRatio(true);
-                        imageView.setFitWidth(50); // Change the value to the desired width
-                        imageView.setFitHeight(50); // Change the value to the desired height
+                                imageView.setFitWidth(50); // Change the value to the desired width
+                                imageView.setFitHeight(50); // Change the value to the desired height
                         nameLabel.setText(photo.getPhotoName());
                     }
                 }
             };
+            hbox.getChildren().add(nameLabel);
             cell.setGraphic(hbox);
             return cell;
         });
@@ -256,35 +258,36 @@ public class Album_View_Controller
         ObservableList<Photo> observablePhotos = FXCollections.observableArrayList(photos);
     
         // Set the cell factory for the ListView to display both the photo and its name
-        photoListView.setCellFactory(param -> 
+        photoListView.setCellFactory(param ->
         {
             ImageView imageView = new ImageView();
-            Label nameLabel = new Label();
-            HBox hbox = new HBox(imageView, nameLabel);
+            HBox hbox = new HBox(imageView);
             hbox.setSpacing(10);
-            ListCell<Photo> cell = new ListCell<Photo>() 
+            Label nameLabel = new Label();
+            ListCell<Photo> cell = new ListCell<Photo>()
             {
                 @Override
-                protected void updateItem(Photo photo, boolean empty) 
+                protected void updateItem(Photo photo, boolean empty)
                 {
                     super.updateItem(photo, empty);
-                    if (empty || photo == null) 
+                    if (empty || photo == null)
                     {
                         setText(null);
                         imageView.setImage(null);
                         nameLabel.setText(null);
-                    } 
-                    else 
+                    }
+                    else
                     {
-                        setText(photo.getPhotoName());
+                        setText(null);
                         imageView.setImage(photo.getImage());
                         imageView.setPreserveRatio(true);
-                        imageView.setFitWidth(50); // Change the value to the desired width
-                        imageView.setFitHeight(50); // Change the value to the desired height
+                                imageView.setFitWidth(50); // Change the value to the desired width
+                                imageView.setFitHeight(50); // Change the value to the desired height
                         nameLabel.setText(photo.getPhotoName());
                     }
                 }
             };
+            hbox.getChildren().add(nameLabel);
             cell.setGraphic(hbox);
             return cell;
         });
@@ -345,35 +348,36 @@ public class Album_View_Controller
         ObservableList<Photo> observablePhotos = FXCollections.observableArrayList(photos);
     
         // Set the cell factory for the ListView to display both the photo and its name
-        photoListView.setCellFactory(param -> 
+        photoListView.setCellFactory(param ->
         {
             ImageView imageView = new ImageView();
-            Label nameLabel = new Label();
-            HBox hbox = new HBox(imageView, nameLabel);
+            HBox hbox = new HBox(imageView);
             hbox.setSpacing(10);
-            ListCell<Photo> cell = new ListCell<Photo>() 
+            Label nameLabel = new Label();
+            ListCell<Photo> cell = new ListCell<Photo>()
             {
                 @Override
-                protected void updateItem(Photo photo, boolean empty) 
+                protected void updateItem(Photo photo, boolean empty)
                 {
                     super.updateItem(photo, empty);
-                    if (empty || photo == null) 
+                    if (empty || photo == null)
                     {
                         setText(null);
                         imageView.setImage(null);
                         nameLabel.setText(null);
-                    } 
-                    else 
+                    }
+                    else
                     {
-                        setText(photo.getPhotoName());
+                        setText(null);
                         imageView.setImage(photo.getImage());
                         imageView.setPreserveRatio(true);
-                        imageView.setFitWidth(50); // Change the value to the desired width
-                        imageView.setFitHeight(50); // Change the value to the desired height
+                                imageView.setFitWidth(50); // Change the value to the desired width
+                                imageView.setFitHeight(50); // Change the value to the desired height
                         nameLabel.setText(photo.getPhotoName());
                     }
                 }
             };
+            hbox.getChildren().add(nameLabel);
             cell.setGraphic(hbox);
             return cell;
         });
