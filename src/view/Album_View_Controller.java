@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
+import app.Photos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,15 +32,15 @@ public class Album_View_Controller
     /**
      * Current user logged in
      */
-    singleUser currentUser;
+    static singleUser currentUser;
     /**
      * Currently selected album
      */
-    Album currentAlbum;
+    static Album currentAlbum;
     /**
      * Photo being viewed
      */
-    Photo currentPhoto;
+    static Photo currentPhoto;
     /**
      * Sets the current user to the one sharing username
      * @param username input username
@@ -115,9 +116,11 @@ public class Album_View_Controller
      * Textfield for photo name */   
     @FXML
     private TextField photoName;
+
     public void initialize() 
     {
-        // I have no idea if this way of displaying photos and names in the list view actually works
+        // Only jpg files work, something to keep in mind
+        currentAlbum=Users.getUser(login_controller.username).getAlbum((User_View_Controller.albumName));
         // Get the list of photos in the current album
         List<Photo> photos = currentAlbum.getPhotos();
     
@@ -147,6 +150,9 @@ public class Album_View_Controller
                     {
                         setText(photo.getPhotoName());
                         imageView.setImage(photo.getImage());
+                        imageView.setPreserveRatio(true);
+                        imageView.setFitWidth(50); // Change the value to the desired width
+                        imageView.setFitHeight(50); // Change the value to the desired height
                         nameLabel.setText(photo.getPhotoName());
                     }
                 }
@@ -154,8 +160,6 @@ public class Album_View_Controller
             cell.setGraphic(hbox);
             return cell;
         });
-        
-    
         // Set the items of the ListView to the observable list of photos
         photoListView.setItems(observablePhotos);
     }
@@ -178,6 +182,49 @@ public class Album_View_Controller
             //Photo photo = new Photo(name, date, image);
             currentAlbum.addPhoto(name, date, image);
         }
+        // wpg files don't work, only jpg and png files
+        currentAlbum=Users.getUser(login_controller.username).getAlbum((User_View_Controller.albumName));
+        // Get the list of photos in the current album
+        List<Photo> photos = currentAlbum.getPhotos();
+    
+        // Create a new ObservableList to hold the photos for the ListView
+        ObservableList<Photo> observablePhotos = FXCollections.observableArrayList(photos);
+    
+        // Set the cell factory for the ListView to display both the photo and its name
+        photoListView.setCellFactory(param -> 
+        {
+            ImageView imageView = new ImageView();
+            Label nameLabel = new Label();
+            HBox hbox = new HBox(imageView, nameLabel);
+            hbox.setSpacing(10);
+            ListCell<Photo> cell = new ListCell<Photo>() 
+            {
+                @Override
+                protected void updateItem(Photo photo, boolean empty) 
+                {
+                    super.updateItem(photo, empty);
+                    if (empty || photo == null) 
+                    {
+                        setText(null);
+                        imageView.setImage(null);
+                        nameLabel.setText(null);
+                    } 
+                    else 
+                    {
+                        setText(photo.getPhotoName());
+                        imageView.setImage(photo.getImage());
+                        imageView.setPreserveRatio(true);
+                        imageView.setFitWidth(50); // Change the value to the desired width
+                        imageView.setFitHeight(50); // Change the value to the desired height
+                        nameLabel.setText(photo.getPhotoName());
+                    }
+                }
+            };
+            cell.setGraphic(hbox);
+            return cell;
+        });
+        // Set the items of the ListView to the observable list of photos
+        photoListView.setItems(observablePhotos);
     }
     /**
      * Adds tags to the current photo
@@ -201,6 +248,48 @@ public class Album_View_Controller
         // No way of knowing which photo is currently selected
         currentAlbum.removePhoto(currentPhoto);
 
+        currentAlbum=Users.getUser(login_controller.username).getAlbum((User_View_Controller.albumName));
+        // Get the list of photos in the current album
+        List<Photo> photos = currentAlbum.getPhotos();
+    
+        // Create a new ObservableList to hold the photos for the ListView
+        ObservableList<Photo> observablePhotos = FXCollections.observableArrayList(photos);
+    
+        // Set the cell factory for the ListView to display both the photo and its name
+        photoListView.setCellFactory(param -> 
+        {
+            ImageView imageView = new ImageView();
+            Label nameLabel = new Label();
+            HBox hbox = new HBox(imageView, nameLabel);
+            hbox.setSpacing(10);
+            ListCell<Photo> cell = new ListCell<Photo>() 
+            {
+                @Override
+                protected void updateItem(Photo photo, boolean empty) 
+                {
+                    super.updateItem(photo, empty);
+                    if (empty || photo == null) 
+                    {
+                        setText(null);
+                        imageView.setImage(null);
+                        nameLabel.setText(null);
+                    } 
+                    else 
+                    {
+                        setText(photo.getPhotoName());
+                        imageView.setImage(photo.getImage());
+                        imageView.setPreserveRatio(true);
+                        imageView.setFitWidth(50); // Change the value to the desired width
+                        imageView.setFitHeight(50); // Change the value to the desired height
+                        nameLabel.setText(photo.getPhotoName());
+                    }
+                }
+            };
+            cell.setGraphic(hbox);
+            return cell;
+        });
+        // Set the items of the ListView to the observable list of photos
+        photoListView.setItems(observablePhotos);
     }
     /**
      * Transitions view of photo to detail view
@@ -248,5 +337,47 @@ public class Album_View_Controller
     {
         String photoNameString = photoName.getText();
         currentPhoto.renamePhoto(photoNameString);
+        currentAlbum=Users.getUser(login_controller.username).getAlbum((User_View_Controller.albumName));
+        // Get the list of photos in the current album
+        List<Photo> photos = currentAlbum.getPhotos();
+    
+        // Create a new ObservableList to hold the photos for the ListView
+        ObservableList<Photo> observablePhotos = FXCollections.observableArrayList(photos);
+    
+        // Set the cell factory for the ListView to display both the photo and its name
+        photoListView.setCellFactory(param -> 
+        {
+            ImageView imageView = new ImageView();
+            Label nameLabel = new Label();
+            HBox hbox = new HBox(imageView, nameLabel);
+            hbox.setSpacing(10);
+            ListCell<Photo> cell = new ListCell<Photo>() 
+            {
+                @Override
+                protected void updateItem(Photo photo, boolean empty) 
+                {
+                    super.updateItem(photo, empty);
+                    if (empty || photo == null) 
+                    {
+                        setText(null);
+                        imageView.setImage(null);
+                        nameLabel.setText(null);
+                    } 
+                    else 
+                    {
+                        setText(photo.getPhotoName());
+                        imageView.setImage(photo.getImage());
+                        imageView.setPreserveRatio(true);
+                        imageView.setFitWidth(50); // Change the value to the desired width
+                        imageView.setFitHeight(50); // Change the value to the desired height
+                        nameLabel.setText(photo.getPhotoName());
+                    }
+                }
+            };
+            cell.setGraphic(hbox);
+            return cell;
+        });
+        // Set the items of the ListView to the observable list of photos
+        photoListView.setItems(observablePhotos);
     }
 }

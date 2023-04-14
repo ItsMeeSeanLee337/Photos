@@ -3,7 +3,6 @@ package app;
 import view.*;
 
 import java.io.*;
-import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -35,8 +34,21 @@ public class Photos extends Application
 		login_controller controller = loader.getController();
 		controller.setMainStage(mainStage);
 	
-		//Initialize the Users class
+		//Initialize the Users class, the following can prbably be some sort of method inside the users class
+		// BUG: Don't know how to have the stock user and album set implemented, current iteration relies on manually inputting images
 		Users data = new Users();
+		Users.addUser("stock");
+		singleUser stock = Users.getUser("stock");
+		stock.addAlbum("stock");
+		Album stockAlbum = stock.getAlbum("stock");
+		System.out.println(data.getAllUsers());
+		System.out.println(data.getUser("stock"));
+		/* This all doesn't work because "The system can't find the path specified"
+		stockAlbum.addPhoto("1.jpg", null, "/data/1.jpg", "tagkey1", "tagvalue1");
+		stockAlbum.addPhoto("2.jpg", null, "/data/2.jpg", "tagkey2", "tagvalue2");
+		stockAlbum.addPhoto("3.jpg", null, "/data/3.jpg", "tagkey3", "tagvalue3");
+		stockAlbum.addPhoto("4.jpg", null, "/data/4.jpg", "tagkey4", "tagvalue4");
+		stockAlbum.addPhoto("5.jpg", null, "/data/6.jpg", "tagkey5", "tagvalue5");*/
 		// Show the scene
 		Scene scene = new Scene(root, 700, 400);
 		mainStage.setScene(scene);
@@ -46,7 +58,8 @@ public class Photos extends Application
 	 * Main class used as launcher
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		launch(args);
 	}
 

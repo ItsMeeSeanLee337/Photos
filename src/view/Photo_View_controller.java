@@ -21,15 +21,15 @@ public class Photo_View_controller
     /**
      * Current user logged in
      */
-    singleUser currentUser;
+    static singleUser currentUser;
     /**
      * Currently selected album
      */
-    Album currentAlbum;
+    static Album currentAlbum;
     /**
      * Photo being viewed
      */
-    Photo currentPhoto;
+    static Photo currentPhoto;
     /**
      * Sets the {@link #currentPhoto currentPhoto} to the inputed photo
      * @param photo

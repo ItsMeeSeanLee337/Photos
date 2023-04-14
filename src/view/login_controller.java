@@ -18,6 +18,10 @@ import javafx.stage.Stage;
 public class login_controller 
 {
     /**
+     * username of user using the application
+     */
+    static String username;
+    /**
      * Loginview is the initial stage
      */
     Stage mainStage;
@@ -38,7 +42,7 @@ public class login_controller
     @FXML
     void LoginButtonClicked(ActionEvent event) 
     {
-        String username = UsernameField.getText();
+        username = UsernameField.getText();
         
         if (username.equals("admin")) 
         {
@@ -66,6 +70,7 @@ public class login_controller
                 Parent root = loader.load();
                 User_View_Controller userViewController = loader.getController();
                 userViewController.setUser(username);
+                System.out.println("Set username to " + username);
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) LoginButton.getScene().getWindow();
                 stage.setScene(scene);

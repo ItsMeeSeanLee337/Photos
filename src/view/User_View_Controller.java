@@ -24,7 +24,11 @@ public class User_View_Controller
     /**
      * current user logged in
      */
-    singleUser currentUser;
+    static singleUser currentUser;
+    /**
+     * Album being viewed/attemping to view
+     */
+    static String albumName;
     /**
      * Sets user to the currently logged in user
      * @param username username of current user
@@ -78,6 +82,7 @@ public class User_View_Controller
     private void initialize() 
     {
         // I think that this method of setting the choice box to all album names works but not sure, need to test
+        currentUser=Users.getUser(login_controller.username);
         List<String> allAlbumNames = currentUser.getAllAlbumsNames();
         AlbumChoiceBox.getItems().addAll(allAlbumNames);
     }
@@ -89,7 +94,8 @@ public class User_View_Controller
     @FXML
     void CreateAlbumButtonClicked(ActionEvent event) 
     {
-        String albumName = NameField.getText();
+        albumName = NameField.getText();
+        System.out.println(NameField.getText());
 
         if (currentUser.albumExists(albumName))
         {
@@ -105,19 +111,22 @@ public class User_View_Controller
             currentUser.addAlbum(albumName);
             NameField.clear();
         }
+        AlbumChoiceBox.getItems().add(albumName);
     }
     /**
-     * Deletes album specified in the {@link #NameField NameField} Textfield
+     * Deletes album specified in the {@link #AlbumChoiceBox AlbumChoiceBox} choice box
      * @param event Button Clicked
      */
     @FXML
     void DeleteAlbumButtonClicked(ActionEvent event) 
     {
-        String albumName = NameField.getText();
+        String albumName = AlbumChoiceBox.getValue();
 
         if (currentUser.albumExists(albumName))
         {
             currentUser.removeAlbum(albumName);
+            // Removes the selected album from the choice box
+            AlbumChoiceBox.getItems().remove(albumName);
         }
         else
         {
@@ -128,6 +137,7 @@ public class User_View_Controller
             alert.setContentText("This album does not exist");
             alert.showAndWait();
         }
+        
     }
     /**
      * Transitions user back to the login view
@@ -137,7 +147,6 @@ public class User_View_Controller
     void LogoutButtonUserClicked(ActionEvent event) 
     {
         // Redirect to login screen
-        // BUG: Current iteration of this method relies on currently unimplemented methods
         try 
         {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
@@ -159,8 +168,7 @@ public class User_View_Controller
     @FXML
     void OpenAlbumButtonClicked(ActionEvent event) 
     {
-        // Get the selected album name from the choice box
-        String albumName = (String) AlbumChoiceBox.getValue();
+        String albumName = AlbumChoiceBox.getValue();
 
         // Check if the selected album name is not null and exists in the user's album list
         if (albumName != null && currentUser.albumExists(albumName)) 
@@ -191,8 +199,7 @@ public class User_View_Controller
     @FXML
     void RenameAlbumButtonClicked(ActionEvent event) 
     {
-        // Get the selected album name from the choice box
-        String oldAlbumName = (String) AlbumChoiceBox.getValue();
+        String oldAlbumName = AlbumChoiceBox.getValue();
 
         // Check if the selected album name is not null and exists in the user's album list
         if (oldAlbumName != null && currentUser.albumExists(oldAlbumName)) 
@@ -217,9 +224,15 @@ public class User_View_Controller
                 {
                     // Rename the album
                     currentUser.renameAlbum(oldAlbumName, newAlbumName);
+                    // Remove the old name and add the new name
+                    AlbumChoiceBox.getItems().remove(oldAlbumName);
+                    AlbumChoiceBox.getItems().add(newAlbumName);
+                    NameField.clear();
                 }
             }
         }
+        
+        
     }
     
     @FXML

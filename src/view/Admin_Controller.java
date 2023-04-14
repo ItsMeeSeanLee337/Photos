@@ -63,7 +63,7 @@ public class Admin_Controller
     {
         String username = NewUserNameField.getText();
         // Check if the user already exists
-        if (Users.userExists(username)) 
+        if (Users.userExists(username) || username.equals("stock")) 
         {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
@@ -87,13 +87,21 @@ public class Admin_Controller
     @FXML
     void DeleteUserButtonClicked(ActionEvent event) 
     {
-        String username = (String)UserListChoiceBox.getId(); // I don't think this is the way to get the username from the choice box but current placeholder
+        String username = UserListChoiceBox.getValue();
         // Check if the user already exists
-        if (Users.userExists(username) && !username.equals("Stock")) 
+        if (username.equals("stock"))
         {
-            UserListChoiceBox.getItems().remove(username);
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid Username");
+            alert.setContentText("Cannot delete the stock user");
+            alert.showAndWait();
+            return;
+        }
+        else if (Users.userExists(username)) 
+        {
             Users.removeUser(username);
-            // This method doesn't fully work because it seems that the deleted user isn't removed from the choice box
+            UserListChoiceBox.getItems().remove(username);
             return;
         }
         else
@@ -114,7 +122,6 @@ public class Admin_Controller
     void LogoutButtonAdminClicked(ActionEvent event) 
     {
         // Redirect to login screen
-        // BUG: Current iteration of this method relies on currently unimplemented methods
         try 
         {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
