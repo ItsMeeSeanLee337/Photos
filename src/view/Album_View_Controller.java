@@ -163,6 +163,19 @@ public class Album_View_Controller
         });
         // Set the items of the ListView to the observable list of photos
         photoListView.setItems(observablePhotos);
+
+        // The following code is to handle if a user clicks on a photo in the listView, accordingly updates the currentPhoto with the selectedPhoto
+        photoListView.setOnMouseClicked(event -> 
+        {
+            if (event.getClickCount() == 1) 
+            {
+                Photo selectedPhoto = photoListView.getSelectionModel().getSelectedItem();
+                if (selectedPhoto != null) 
+                {
+                    currentPhoto = selectedPhoto;
+                }
+            }
+        });
     }
     /*
      * Adds a new photo to the current album
@@ -246,8 +259,6 @@ public class Album_View_Controller
     @FXML
     void DeletePhotoButtonClicked(ActionEvent event) 
     {
-        // TODO: Deletes the current photo from the album, this is really placeholder because the controller never updates which photo is the current one
-        // No way of knowing which photo is currently selected
         currentAlbum.removePhoto(currentPhoto);
 
         currentAlbum=Users.getUser(login_controller.username).getAlbum((User_View_Controller.albumName));
@@ -301,7 +312,7 @@ public class Album_View_Controller
     @FXML
     void DetailViewButtonClicked(ActionEvent event) 
     {
-        // Go to Photo's detailed view
+        // Go to Photo's detailed view, this currently does not work for some reason
         try 
         {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Photo View.fxml"));
