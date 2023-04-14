@@ -125,7 +125,8 @@ public class Album_View_Controller
         ObservableList<Photo> observablePhotos = FXCollections.observableArrayList(photos);
     
         // Set the cell factory for the ListView to display both the photo and its name
-        photoListView.setCellFactory(param -> {
+        photoListView.setCellFactory(param -> 
+        {
             ImageView imageView = new ImageView();
             Label nameLabel = new Label();
             HBox hbox = new HBox(imageView, nameLabel);
@@ -141,7 +142,9 @@ public class Album_View_Controller
                         setText(null);
                         imageView.setImage(null);
                         nameLabel.setText(null);
-                    } else {
+                    } 
+                    else 
+                    {
                         setText(photo.getPhotoName());
                         imageView.setImage(photo.getImage());
                         nameLabel.setText(photo.getPhotoName());
@@ -194,8 +197,10 @@ public class Album_View_Controller
     @FXML
     void DeletePhotoButtonClicked(ActionEvent event) 
     {
-        // TODO: Deletes the current photo from the album
+        // TODO: Deletes the current photo from the album, this is really placeholder because the controller never updates which photo is the current one
         // No way of knowing which photo is currently selected
+        currentAlbum.removePhoto(currentPhoto);
+
     }
     /**
      * Transitions view of photo to detail view

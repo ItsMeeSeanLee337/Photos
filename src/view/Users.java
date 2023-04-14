@@ -72,41 +72,27 @@ public class Users implements Serializable
         return users;
     }
 
-    // I am not sure if the following methods for serializing and deserializing, also I don't know how to use them, must test
+    // I am not sure if the following methods for serializing and deserializing, also I don't know how to use them, must test 
     /**
      * Writes the Users object to a file using ObjectOutputStream
      * @param fileName name of the file to write to
      */
-    public static void writeToFile(String fileName) 
+    public void writeToFile(String filename) throws IOException 
     {
-        try 
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) 
         {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName));
-            out.writeObject(users);
-            out.close();
-        } 
-        catch (IOException e) 
-        {
-            e.printStackTrace();
+            oos.writeObject(this);
         }
     }
-    
     /**
      * Reads the Users object from a file using ObjectInputStream
      * @param fileName name of the file to read from
      */
-    public static void readFromFile(String fileName) 
+    public static Users readFromFile(String filename) throws IOException, ClassNotFoundException 
     {
-        try 
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) 
         {
-
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName));
-            users = (HashMap<String, singleUser>) in.readObject();
-            in.close();
-        } 
-        catch (IOException | ClassNotFoundException e) 
-        {
-            e.printStackTrace();
+            return (Users) ois.readObject();
         }
     }
 }
