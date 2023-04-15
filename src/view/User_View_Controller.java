@@ -74,6 +74,9 @@ public class User_View_Controller
     private Button RenameAlbumButton;
 
     @FXML
+    private Button SearchPhotosButton;
+
+    @FXML
     private void initialize() 
     {
         // I think that this method of setting the choice box to all album names works but not sure, need to test
@@ -224,7 +227,25 @@ public class User_View_Controller
                 }
             }
         }
-        
-        
+    }
+    @FXML
+    void SearchPhotosButtonClicked(ActionEvent event) 
+    {
+        // Redirect to the search screen
+        try 
+        {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Search View.fxml"));
+            Parent root = loader.load();
+            Search_View_Controller search_View_Controller = loader.getController();
+            search_View_Controller.setUser(currentUser);
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) OpenAlbumButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } 
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        }
     }
 }

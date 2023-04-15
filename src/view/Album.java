@@ -52,6 +52,15 @@ public class Album implements Serializable
         photos.add(photo);
     }
     /**
+     * Adds a photo the the album
+     * @param Photo premade photo
+     * @throws FileNotFoundException
+     */
+    public void addPhoto(Photo photo) throws FileNotFoundException 
+    {
+        photos.add(photo);
+    }
+    /**
      * Retrives photos
      * @return this albums array of {@link #photos photos}
      */

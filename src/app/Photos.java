@@ -3,10 +3,12 @@ package app;
 import view.*;
 
 import java.io.*;
+import java.util.Calendar;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import view.login_controller;
@@ -41,12 +43,19 @@ public class Photos extends Application
 		singleUser stock = Users.getUser("stock");
 		stock.addAlbum("stock");
 		Album stockAlbum = stock.getAlbum("stock");
-		/* This all doesn't work because "The system can't find the path specified"
-		stockAlbum.addPhoto("1.jpg", null, "/data/1.jpg", "tagkey1", "tagvalue1");
-		stockAlbum.addPhoto("2.jpg", null, "/data/2.jpg", "tagkey2", "tagvalue2");
-		stockAlbum.addPhoto("3.jpg", null, "/data/3.jpg", "tagkey3", "tagvalue3");
-		stockAlbum.addPhoto("4.jpg", null, "/data/4.jpg", "tagkey4", "tagvalue4");
-		stockAlbum.addPhoto("5.jpg", null, "/data/6.jpg", "tagkey5", "tagvalue5");*/
+		//* This all doesn't work because "The system can't find the path specified"
+		Calendar date = Calendar.getInstance();
+		Image first = new Image("file:data/1.jpg");
+		Image second = new Image("file:data/2.jpg");
+		Image third = new Image("file:data/3.jpg");
+		Image fourth = new Image("file:data/4.jpg");
+		Image fifth = new Image("file:data/5.jpg");
+
+		stockAlbum.addPhoto("1.jpg", date, first);
+		stockAlbum.addPhoto("1.jpg", date, second);
+		stockAlbum.addPhoto("1.jpg", date, third);
+		stockAlbum.addPhoto("1.jpg", date, fourth);
+		stockAlbum.addPhoto("1.jpg", date, fifth);
 		// Show the scene
 		Scene scene = new Scene(root, 700, 400);
 		mainStage.setScene(scene);

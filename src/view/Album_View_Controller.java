@@ -80,11 +80,6 @@ public class Album_View_Controller
      * Imageview containing photos
      */
     @FXML
-    private ImageView AlbumImageView;
-    /**
-     * Button to delete photos
-     */
-    @FXML
     private Button DeletePhotoButton;
     /**
      * Button to open photo into detail view
@@ -96,6 +91,9 @@ public class Album_View_Controller
      */
     @FXML
     private ListView<Photo> photoListView;
+    /**
+     * Button to remove tags
+     */
     @FXML
     private Button RemoveTagsButton;
     /**
@@ -117,7 +115,9 @@ public class Album_View_Controller
      * Textfield for photo name */   
     @FXML
     private TextField photoName;
-
+    /**
+     * Class to handle imageviewing on initialization
+     */
     public void initialize() 
     {
         // Only jpg files work, something to keep in mind
@@ -260,7 +260,12 @@ public class Album_View_Controller
             alert.setContentText("A tag with this key value pair already exists");
             alert.showAndWait();
         }
-        currentPhoto.addTags(tagKeyString, tagValueString);
+        else
+        {
+            tagKey.clear();
+            tagValue.clear();
+            currentPhoto.addTags(tagKeyString, tagValueString);
+        }
     }
     /**
      * Deletes currently selected photo
@@ -353,6 +358,8 @@ public class Album_View_Controller
         String tagValueString = tagValue.getText();
         if (currentPhoto.doesTagExist(tagKeyString, tagValueString))
         {
+            tagKey.clear();
+            tagValue.clear();
             currentPhoto.removeTags(tagKeyString, tagValueString);
         }
         else

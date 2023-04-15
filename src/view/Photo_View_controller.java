@@ -79,6 +79,9 @@ public class Photo_View_controller
      */
     @FXML
     private ListView<String> ListOfTags;
+    /**
+     * Updates photo properties
+     */
     public void updateUI() 
     {
         if (currentPhoto != null) 
@@ -91,6 +94,9 @@ public class Photo_View_controller
             ListOfTags.getItems().addAll(allTags);
         }
     }
+    /**
+     * sets up photo viewing
+     */
     @FXML
     private void initialize() 
     {

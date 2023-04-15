@@ -112,6 +112,22 @@ public class Photo implements Serializable
         return keyValuePairs;
     }
     /**
+     * Returns whether or not a tag exists in this photo
+     * @return {true or false
+     */
+    public boolean doesTagExist(String tagKey, String tagValue) 
+    {
+        ArrayList<String> keyValuePairs = new ArrayList<>();
+        for (Map.Entry<String, String> entry : tags.entrySet()) 
+        {
+            if (entry.getKey().equals(tagKey) && entry.getValue().equals(tagValue))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
      * Adds new tag
      * @param tagKey Key for {@link #tags tag} hashmap
      * @param tagValue Value for {@link #tags tag} hashmap

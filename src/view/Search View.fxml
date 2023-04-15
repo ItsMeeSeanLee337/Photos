@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Search_View_Controller">
+   <children>
+      <AnchorPane prefHeight="424.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="LogoutButton" layoutX="28.0" layoutY="14.0" mnemonicParsing="false" onAction="#LogoutButtonClicked" text="Logout" />
+            <TextField fx:id="SearchInputTextField" layoutX="55.0" layoutY="323.0" prefHeight="25.0" prefWidth="489.0" promptText="Search by name, date (&quot;MM-dd-yyyy&quot;), or tag (&quot;key: value&quot;):" />
+            <Button fx:id="SearchByNameSearchButton" layoutX="82.0" layoutY="360.0" mnemonicParsing="false" onAction="#SearchByNameButtonClicked" text="Search By Name" />
+            <ListView fx:id="SearchedPhotosListView" layoutX="55.0" layoutY="55.0" prefHeight="247.0" prefWidth="489.0" />
+            <Button fx:id="ReturnButton" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#ReturnButtonClicked" text="Return" />
+            <Button fx:id="CreateAlbumFromResultsButton" layoutX="428.0" layoutY="360.0" mnemonicParsing="false" onAction="#CreateAlbumFromResultsButtonClicked" text="Create Album from Results" />
+            <Button fx:id="SearchByDateButton" layoutX="197.0" layoutY="360.0" mnemonicParsing="false" onAction="#SearchByDateButtonClicked" text="Search By Date" />
+            <Button fx:id="SearchByTagButton" layoutX="300.0" layoutY="360.0" mnemonicParsing="false" onAction="#SearchByTagButtonClicked" text="Search By Tag" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

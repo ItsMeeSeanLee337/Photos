@@ -40,6 +40,10 @@ public class singleUser implements Serializable
     {
         albums.add(new Album(albumName));
     }
+    public String getUsername()
+    {
+        return username;
+    }
     /**
      * Retrieves album from this users {@link #albums albums}
      * @param albumName Name of album to be searched
@@ -121,6 +125,11 @@ public class singleUser implements Serializable
     }
 
     // I am not sure if the following methods for serializing and deserializing, also I don't know how to use them, must test 
+    /**
+     * For serialization
+     * @param filename File for serialization
+     * @throws IOException Exception from writing files
+     */
     public void writeToFile(String filename) throws IOException 
     {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) 
@@ -128,7 +137,13 @@ public class singleUser implements Serializable
             oos.writeObject(this);
         }
     }
-
+    /**
+     * For deserialization
+     * @param filename File for deserialization
+     * @return Object info
+     * @throws IOException Exception from reading files
+     * @throws ClassNotFoundException Unknown reading
+     */
     public static singleUser readFromFile(String filename) throws IOException, ClassNotFoundException 
     {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) 
