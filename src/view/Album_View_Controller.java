@@ -312,7 +312,7 @@ public class Album_View_Controller
     @FXML
     void DetailViewButtonClicked(ActionEvent event) 
     {
-        // Go to Photo's detailed view, this currently does not work for some reason
+        // Go to Photo's detailed view, the reason this doesn't work is because when getting the controller, currentPhoto is null for the controller
         try 
         {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Photo View.fxml"));
@@ -321,6 +321,7 @@ public class Album_View_Controller
             photoViewController.setUser(currentUser);
             photoViewController.setAlbumName(currentAlbum.getAlbumName());
             photoViewController.setPhoto(currentPhoto);
+            photoViewController.updateUI();
             Scene scene = new Scene(root);
             Stage stage = (Stage) DetailViewButton.getScene().getWindow();
             stage.setScene(scene);

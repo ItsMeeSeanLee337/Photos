@@ -79,12 +79,31 @@ public class Photo_View_controller
      */
     @FXML
     private ListView<String> ListOfTags;
+    public void updateUI() 
+    {
+        if (currentPhoto != null) 
+        {
+            photoName.setText(currentPhoto.getPhotoName());
+            DetailedImageView.setImage(currentPhoto.getImage());
+            DateLabel.setText(currentPhoto.getDateAsString());
+            // I think that this method of setting the choice box to all tags works but not sure, need to test
+            List<String> allTags = currentPhoto.getTagsAsString();
+            ListOfTags.getItems().addAll(allTags);
+        }
+    }
     @FXML
     private void initialize() 
     {
-        // I think that this method of setting the choice box to all tags works but not sure, need to test
-        List<String> allTags = currentPhoto.getTagsAsString();
-        ListOfTags.getItems().addAll(allTags);
+        if (currentPhoto != null)
+        {
+            photoName.setText(currentPhoto.getPhotoName());
+            DetailedImageView.setImage(currentPhoto.getImage());
+            DateLabel.setText(currentPhoto.getDateAsString());
+            // I think that this method of setting the choice box to all tags works but not sure, need to test
+            List<String> allTags = currentPhoto.getTagsAsString();
+            ListOfTags.getItems().addAll(allTags);
+        }
+          
     }
     /**
      * Returns the user to their album view

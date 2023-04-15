@@ -95,8 +95,6 @@ public class User_View_Controller
     void CreateAlbumButtonClicked(ActionEvent event) 
     {
         albumName = NameField.getText();
-        System.out.println(NameField.getText());
-
         if (currentUser.albumExists(albumName))
         {
             // Show error message for album already existing

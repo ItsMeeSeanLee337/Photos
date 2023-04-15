@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,6 +71,15 @@ public class Photo implements Serializable
     public Calendar getDate()
     {
         return date;
+    }
+    /**
+     * Retrieves date of this photo as a string
+     * @return {@link #date} of this photo formatted as a string in the format "yyyy-MM-dd"
+     */
+    public String getDateAsString() 
+    {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+        return dateFormat.format(date.getTime());
     }
     /**
      * Retrieves Image of this photo
