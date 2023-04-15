@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
-import app.Photos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,11 +13,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -151,8 +152,8 @@ public class Album_View_Controller
                         setText(null);
                         imageView.setImage(photo.getImage());
                         imageView.setPreserveRatio(true);
-                                imageView.setFitWidth(50); // Change the value to the desired width
-                                imageView.setFitHeight(50); // Change the value to the desired height
+                        imageView.setFitWidth(50); // Change the value to the desired width
+                        imageView.setFitHeight(50); // Change the value to the desired height
                         nameLabel.setText(photo.getPhotoName());
                     }
                 }
@@ -228,8 +229,8 @@ public class Album_View_Controller
                         setText(null);
                         imageView.setImage(photo.getImage());
                         imageView.setPreserveRatio(true);
-                                imageView.setFitWidth(50); // Change the value to the desired width
-                                imageView.setFitHeight(50); // Change the value to the desired height
+                        imageView.setFitWidth(50); // Change the value to the desired width
+                        imageView.setFitHeight(50); // Change the value to the desired height
                         nameLabel.setText(photo.getPhotoName());
                     }
                 }
@@ -250,6 +251,15 @@ public class Album_View_Controller
     {
         String tagKeyString = tagKey.getText();
         String tagValueString = tagValue.getText();
+        if (currentPhoto.doesTagExist(tagKeyString, tagValueString))
+        {
+            // Show error message for tag already existing
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid Tag");
+            alert.setContentText("A tag with this key value pair already exists");
+            alert.showAndWait();
+        }
         currentPhoto.addTags(tagKeyString, tagValueString);
     }
     /**
@@ -292,8 +302,8 @@ public class Album_View_Controller
                         setText(null);
                         imageView.setImage(photo.getImage());
                         imageView.setPreserveRatio(true);
-                                imageView.setFitWidth(50); // Change the value to the desired width
-                                imageView.setFitHeight(50); // Change the value to the desired height
+                        imageView.setFitWidth(50); // Change the value to the desired width
+                        imageView.setFitHeight(50); // Change the value to the desired height
                         nameLabel.setText(photo.getPhotoName());
                     }
                 }
@@ -312,14 +322,14 @@ public class Album_View_Controller
     @FXML
     void DetailViewButtonClicked(ActionEvent event) 
     {
-        // Go to Photo's detailed view, the reason this doesn't work is because when getting the controller, currentPhoto is null for the controller
+        // Go to Photo's detailed view
         try 
         {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Photo View.fxml"));
             Parent root = loader.load();
             Photo_View_controller photoViewController = loader.getController();
             photoViewController.setUser(currentUser);
-            photoViewController.setAlbumName(currentAlbum.getAlbumName());
+            photoViewController.setAlbum(currentAlbum);
             photoViewController.setPhoto(currentPhoto);
             photoViewController.updateUI();
             Scene scene = new Scene(root);
@@ -383,8 +393,8 @@ public class Album_View_Controller
                         setText(null);
                         imageView.setImage(photo.getImage());
                         imageView.setPreserveRatio(true);
-                                imageView.setFitWidth(50); // Change the value to the desired width
-                                imageView.setFitHeight(50); // Change the value to the desired height
+                        imageView.setFitWidth(50); // Change the value to the desired width
+                        imageView.setFitHeight(50); // Change the value to the desired height
                         nameLabel.setText(photo.getPhotoName());
                     }
                 }

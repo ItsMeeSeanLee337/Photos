@@ -41,8 +41,6 @@ public class Photos extends Application
 		singleUser stock = Users.getUser("stock");
 		stock.addAlbum("stock");
 		Album stockAlbum = stock.getAlbum("stock");
-		System.out.println(data.getAllUsers());
-		System.out.println(data.getUser("stock"));
 		/* This all doesn't work because "The system can't find the path specified"
 		stockAlbum.addPhoto("1.jpg", null, "/data/1.jpg", "tagkey1", "tagvalue1");
 		stockAlbum.addPhoto("2.jpg", null, "/data/2.jpg", "tagkey2", "tagvalue2");

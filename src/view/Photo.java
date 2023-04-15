@@ -103,7 +103,6 @@ public class Photo implements Serializable
      */
     public ArrayList<String> getTagsAsString() 
     {
-        // I think that this method should work but haven't tested yet, need to try it out
         ArrayList<String> keyValuePairs = new ArrayList<>();
         for (Map.Entry<String, String> entry : tags.entrySet()) 
         {

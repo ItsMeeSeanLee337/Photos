@@ -50,9 +50,9 @@ public class Photo_View_controller
      * Retrieves the current users album with input albumname
      * @param albumName input albumname
      */
-    public void setAlbumName(String albumName)
+    public void setAlbum(Album albumName)
     {
-        currentUser.getAlbum(albumName);
+        currentAlbum = albumName;
     }
     /**
      * Label to hold photo title
@@ -113,7 +113,6 @@ public class Photo_View_controller
     void returnButtonClicked(ActionEvent event) 
     {
         // Redirect to user's album view
-        // BUG: Current iteration of this method relies on currently unimplemented methods
         try 
         {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Album View.fxml"));
