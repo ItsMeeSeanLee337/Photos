@@ -72,11 +72,6 @@ public class User_View_Controller
      */
     @FXML
     private Button RenameAlbumButton;
-    /**
-     * Button to search through photos in each album
-     */
-    @FXML
-    private Button SearchPhotosButton;
 
     @FXML
     private void initialize() 
@@ -231,12 +226,5 @@ public class User_View_Controller
         }
         
         
-    }
-    
-    @FXML
-    void SearchPhotosButtonClicked(ActionEvent event) 
-    {
-        // TODO: This should search through all photos in each album according to criteria
-        // We will likely have to create a seperate view for searching through photos so clicking this button will just redirect to that view
     }
 }

@@ -256,7 +256,7 @@ public class Album_View_Controller
             // Show error message for tag already existing
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("Invalid Tag");
+            alert.setHeaderText("Invalid Tag Addition");
             alert.setContentText("A tag with this key value pair already exists");
             alert.showAndWait();
         }
@@ -351,7 +351,19 @@ public class Album_View_Controller
     {
         String tagKeyString = tagKey.getText();
         String tagValueString = tagValue.getText();
-        currentPhoto.removeTags(tagKeyString, tagValueString);
+        if (currentPhoto.doesTagExist(tagKeyString, tagValueString))
+        {
+            currentPhoto.removeTags(tagKeyString, tagValueString);
+        }
+        else
+        {
+            // Show error message for tag not existing
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid Tag Deletion");
+            alert.setContentText("A tag with this key value pair does not exist");
+            alert.showAndWait();
+        }
     }
     /**
      * Renames photo to string specified in the {@link #photoName photoname} textfield
