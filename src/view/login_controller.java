@@ -70,6 +70,7 @@ public class login_controller
                 Parent root = loader.load();
                 User_View_Controller userViewController = loader.getController();
                 userViewController.setUser(username);
+                userViewController.updateUI();
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) LoginButton.getScene().getWindow();
                 stage.setScene(scene);

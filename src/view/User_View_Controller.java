@@ -91,6 +91,9 @@ public class User_View_Controller
             AlbumChoiceBox.getItems().addAll(allAlbumNames);
         }
     }
+    /**
+     * Class to handle filling album choices when updating
+     */
     public void updateUI()
     {
         // I think that this method of setting the choice box to all album names works but not sure, need to test

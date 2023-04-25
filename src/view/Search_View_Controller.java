@@ -79,6 +79,7 @@ public class Search_View_Controller
             Album_View_Controller albumViewController = loader.getController();
             albumViewController.setUser(currentUser);
             albumViewController.setAlbumName("Album from results");
+            albumViewController.updateUI();
             Scene scene = new Scene(root);
             Stage stage = (Stage) CreateAlbumFromResultsButton.getScene().getWindow();
             stage.setScene(scene);
@@ -119,6 +120,7 @@ public class Search_View_Controller
             Parent root = loader.load();
             User_View_Controller userViewController = loader.getController();
             userViewController.setUser(currentUser.getUsername());
+            userViewController.updateUI();
             Scene scene = new Scene(root);
             Stage stage = (Stage) ReturnButton.getScene().getWindow();
             stage.setScene(scene);
