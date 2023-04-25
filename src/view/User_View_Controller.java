@@ -72,19 +72,35 @@ public class User_View_Controller
      */
     @FXML
     private Button RenameAlbumButton;
-
+    /**
+     * Button to search through photos
+     */
     @FXML
     private Button SearchPhotosButton;
-
+    /**
+     * Class to handle filling album choices on initialization
+     */
     @FXML
     private void initialize() 
     {
         // I think that this method of setting the choice box to all album names works but not sure, need to test
-        currentUser=Users.getUser(login_controller.username);
-        List<String> allAlbumNames = currentUser.getAllAlbumsNames();
-        AlbumChoiceBox.getItems().addAll(allAlbumNames);
+        if (currentUser != null) 
+        {
+            currentUser=Users.getUser(login_controller.username);
+            List<String> allAlbumNames = currentUser.getAllAlbumsNames();
+            AlbumChoiceBox.getItems().addAll(allAlbumNames);
+        }
     }
-
+    public void updateUI()
+    {
+        // I think that this method of setting the choice box to all album names works but not sure, need to test
+        if (currentUser != null) 
+        {
+            currentUser=Users.getUser(login_controller.username);
+            List<String> allAlbumNames = currentUser.getAllAlbumsNames();
+            AlbumChoiceBox.getItems().addAll(allAlbumNames);
+        }
+    }
     /**
      * Creates new album with the name specified in the {@link #NameField NameField} Textfield
      * @param event Button clicked
@@ -228,6 +244,10 @@ public class User_View_Controller
             }
         }
     }
+    /**
+     * Searches through all photos in all albums for the current user
+     * @param event Button clicked
+     */
     @FXML
     void SearchPhotosButtonClicked(ActionEvent event) 
     {

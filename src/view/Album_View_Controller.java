@@ -120,63 +120,132 @@ public class Album_View_Controller
      */
     public void initialize() 
     {
-        // Only jpg files work, something to keep in mind
-        currentAlbum=Users.getUser(login_controller.username).getAlbum((User_View_Controller.albumName));
-        // Get the list of photos in the current album
-        List<Photo> photos = currentAlbum.getPhotos();
-    
-        // Create a new ObservableList to hold the photos for the ListView
-        ObservableList<Photo> observablePhotos = FXCollections.observableArrayList(photos);
-    
-        // Set the cell factory for the ListView to display both the photo and its name
-        photoListView.setCellFactory(param ->
+        if (currentUser!= null)
         {
-            ImageView imageView = new ImageView();
-            HBox hbox = new HBox(imageView);
-            hbox.setSpacing(10);
-            Label nameLabel = new Label();
-            ListCell<Photo> cell = new ListCell<Photo>()
+            // Only jpg files work, something to keep in mind
+            currentAlbum=Users.getUser(login_controller.username).getAlbum((User_View_Controller.albumName));
+            // Get the list of photos in the current album
+            List<Photo> photos = currentAlbum.getPhotos();
+        
+            // Create a new ObservableList to hold the photos for the ListView
+            ObservableList<Photo> observablePhotos = FXCollections.observableArrayList(photos);
+        
+            // Set the cell factory for the ListView to display both the photo and its name
+            photoListView.setCellFactory(param ->
             {
-                @Override
-                protected void updateItem(Photo photo, boolean empty)
+                ImageView imageView = new ImageView();
+                HBox hbox = new HBox(imageView);
+                hbox.setSpacing(10);
+                Label nameLabel = new Label();
+                ListCell<Photo> cell = new ListCell<Photo>()
                 {
-                    super.updateItem(photo, empty);
-                    if (empty || photo == null)
+                    @Override
+                    protected void updateItem(Photo photo, boolean empty)
                     {
-                        setText(null);
-                        imageView.setImage(null);
-                        nameLabel.setText(null);
+                        super.updateItem(photo, empty);
+                        if (empty || photo == null)
+                        {
+                            setText(null);
+                            imageView.setImage(null);
+                            nameLabel.setText(null);
+                        }
+                        else
+                        {
+                            setText(null);
+                            imageView.setImage(photo.getImage());
+                            imageView.setPreserveRatio(true);
+                            imageView.setFitWidth(50); // Change the value to the desired width
+                            imageView.setFitHeight(50); // Change the value to the desired height
+                            nameLabel.setText(photo.getPhotoName());
+                        }
                     }
-                    else
-                    {
-                        setText(null);
-                        imageView.setImage(photo.getImage());
-                        imageView.setPreserveRatio(true);
-                        imageView.setFitWidth(50); // Change the value to the desired width
-                        imageView.setFitHeight(50); // Change the value to the desired height
-                        nameLabel.setText(photo.getPhotoName());
-                    }
-                }
-            };
-            hbox.getChildren().add(nameLabel);
-            cell.setGraphic(hbox);
-            return cell;
-        });
-        // Set the items of the ListView to the observable list of photos
-        photoListView.setItems(observablePhotos);
+                };
+                hbox.getChildren().add(nameLabel);
+                cell.setGraphic(hbox);
+                return cell;
+            });
+            // Set the items of the ListView to the observable list of photos
+            photoListView.setItems(observablePhotos);
 
-        // The following code is to handle if a user clicks on a photo in the listView, accordingly updates the currentPhoto with the selectedPhoto
-        photoListView.setOnMouseClicked(event -> 
-        {
-            if (event.getClickCount() == 1) 
+            // The following code is to handle if a user clicks on a photo in the listView, accordingly updates the currentPhoto with the selectedPhoto
+            photoListView.setOnMouseClicked(event -> 
             {
-                Photo selectedPhoto = photoListView.getSelectionModel().getSelectedItem();
-                if (selectedPhoto != null) 
+                if (event.getClickCount() == 1) 
                 {
-                    currentPhoto = selectedPhoto;
+                    Photo selectedPhoto = photoListView.getSelectionModel().getSelectedItem();
+                    if (selectedPhoto != null) 
+                    {
+                        currentPhoto = selectedPhoto;
+                    }
                 }
-            }
-        });
+            });
+        }
+    }
+    /**
+     * Class to handle updating imageviewing 
+     */
+    public void updateUI()
+    {
+        if (currentUser != null)
+        {
+            // Only jpg files work, something to keep in mind
+            currentAlbum=Users.getUser(login_controller.username).getAlbum((User_View_Controller.albumName));
+            // Get the list of photos in the current album
+            List<Photo> photos = currentAlbum.getPhotos();
+        
+            // Create a new ObservableList to hold the photos for the ListView
+            ObservableList<Photo> observablePhotos = FXCollections.observableArrayList(photos);
+        
+            // Set the cell factory for the ListView to display both the photo and its name
+            photoListView.setCellFactory(param ->
+            {
+                ImageView imageView = new ImageView();
+                HBox hbox = new HBox(imageView);
+                hbox.setSpacing(10);
+                Label nameLabel = new Label();
+                ListCell<Photo> cell = new ListCell<Photo>()
+                {
+                    @Override
+                    protected void updateItem(Photo photo, boolean empty)
+                    {
+                        super.updateItem(photo, empty);
+                        if (empty || photo == null)
+                        {
+                            setText(null);
+                            imageView.setImage(null);
+                            nameLabel.setText(null);
+                        }
+                        else
+                        {
+                            setText(null);
+                            imageView.setImage(photo.getImage());
+                            imageView.setPreserveRatio(true);
+                            imageView.setFitWidth(50); // Change the value to the desired width
+                            imageView.setFitHeight(50); // Change the value to the desired height
+                            nameLabel.setText(photo.getPhotoName());
+                        }
+                    }
+                };
+                hbox.getChildren().add(nameLabel);
+                cell.setGraphic(hbox);
+                return cell;
+            });
+            // Set the items of the ListView to the observable list of photos
+            photoListView.setItems(observablePhotos);
+
+            // The following code is to handle if a user clicks on a photo in the listView, accordingly updates the currentPhoto with the selectedPhoto
+            photoListView.setOnMouseClicked(event -> 
+            {
+                if (event.getClickCount() == 1) 
+                {
+                    Photo selectedPhoto = photoListView.getSelectionModel().getSelectedItem();
+                    if (selectedPhoto != null) 
+                    {
+                        currentPhoto = selectedPhoto;
+                    }
+                }
+            });
+        }
     }
     /*
      * Adds a new photo to the current album
