@@ -51,12 +51,12 @@ public class Album_View_Controller
         currentUser = username;
     }
     /**
-     * Retrieves the current users album with input albumname
+     * Retrieves the current users album with input albumName
      * @param albumName input albumname
      */
     public void setAlbumName(String albumName)
     {
-        currentUser.getAlbum(albumName);
+        currentAlbum = currentUser.getAlbum(albumName);
     }
     /**
      * Sets the {@link #currentPhoto currentPhoto} to the inputed photo
@@ -120,10 +120,9 @@ public class Album_View_Controller
      */
     public void initialize() 
     {
-        if (currentUser != null && currentAlbum != null)
+        if (currentUser != null)
         {
             // Only jpg files work, something to keep in mind
-            currentAlbum=Users.getUser(login_controller.username).getAlbum((User_View_Controller.albumName));
             // Get the list of photos in the current album
             List<Photo> photos = currentAlbum.getPhotos();
         
@@ -186,10 +185,9 @@ public class Album_View_Controller
      */
     public void updateUI()
     {
-        if (currentUser != null && currentAlbum != null)
+        if (currentUser != null)
         {
             // Only jpg files work, something to keep in mind
-            currentAlbum=Users.getUser(login_controller.username).getAlbum((User_View_Controller.albumName));
             // Get the list of photos in the current album
             List<Photo> photos = currentAlbum.getPhotos();
         
