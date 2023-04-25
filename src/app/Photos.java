@@ -52,10 +52,10 @@ public class Photos extends Application
 		Image fifth = new Image("file:data/5.jpg");
 
 		stockAlbum.addPhoto("1.jpg", date, first);
-		stockAlbum.addPhoto("1.jpg", date, second);
-		stockAlbum.addPhoto("1.jpg", date, third);
-		stockAlbum.addPhoto("1.jpg", date, fourth);
-		stockAlbum.addPhoto("1.jpg", date, fifth);
+		stockAlbum.addPhoto("2.jpg", date, second);
+		stockAlbum.addPhoto("3.jpg", date, third);
+		stockAlbum.addPhoto("4.jpg", date, fourth);
+		stockAlbum.addPhoto("5.jpg", date, fifth);
 		System.out.println( "list of stock photos" + stock.getAlbum("stock").getPhotos());
 
 		// Show the scene
