@@ -254,6 +254,7 @@ public class Album_View_Controller
     @FXML
     void AddNewPhotoButtonClicked(ActionEvent event) throws FileNotFoundException 
     {
+        System.out.println( "list of stock photos" + currentUser.getAlbum("stock").getPhotos());
         // This method needs testing
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(null);

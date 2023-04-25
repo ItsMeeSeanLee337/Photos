@@ -56,6 +56,8 @@ public class Photos extends Application
 		stockAlbum.addPhoto("1.jpg", date, third);
 		stockAlbum.addPhoto("1.jpg", date, fourth);
 		stockAlbum.addPhoto("1.jpg", date, fifth);
+		System.out.println( "list of stock photos" + stock.getAlbum("stock").getPhotos());
+
 		// Show the scene
 		Scene scene = new Scene(root, 700, 400);
 		mainStage.setScene(scene);
