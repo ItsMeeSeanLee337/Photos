@@ -120,7 +120,7 @@ public class Album_View_Controller
      */
     public void initialize() 
     {
-        if (currentUser!= null)
+        if (currentUser != null && currentAlbum != null)
         {
             // Only jpg files work, something to keep in mind
             currentAlbum=Users.getUser(login_controller.username).getAlbum((User_View_Controller.albumName));
@@ -186,7 +186,7 @@ public class Album_View_Controller
      */
     public void updateUI()
     {
-        if (currentUser != null)
+        if (currentUser != null && currentAlbum != null)
         {
             // Only jpg files work, something to keep in mind
             currentAlbum=Users.getUser(login_controller.username).getAlbum((User_View_Controller.albumName));

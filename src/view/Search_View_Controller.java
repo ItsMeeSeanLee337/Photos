@@ -19,7 +19,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
+/**
+ * Controller for the search view
+ */
 public class Search_View_Controller 
 {
 
@@ -35,32 +37,53 @@ public class Search_View_Controller
     {
         currentUser = username;
     }
-
+    /**
+     * List of photos containing results from search
+     */
     List<Photo> results;
+    /**
+     * Button to create album from results
+     */
     @FXML
     private Button CreateAlbumFromResultsButton;
-
+    /**
+     * Button to log user out
+     */
     @FXML
     private Button LogoutButton;
-
+    /**
+     * Button to return to user view
+     */
     @FXML
     private Button ReturnButton;
-
+    /**
+     * Button to serach by the date
+     */
     @FXML
     private Button SearchByDateButton;
-
+    /**
+     * Button to search by the photos name
+     */
     @FXML
     private Button SearchByNameSearchButton;
-
+    /**
+     * Button to search by tags
+     */
     @FXML
     private Button SearchByTagButton;
-
+    /**
+     * TextField to hold the search parameters for the {@link #SearchByNameSearchButton SearchByNameSearchButton}, {@link #SearchByTagButton SearchByTagButton}, and {@link #SearchByDateButton SearchByDateButton}
+     */
     @FXML
     private TextField SearchInputTextField;
-
+    /**
+     * ListView containing all the searched photos
+     */
     @FXML
     private ListView<Photo> SearchedPhotosListView;
-
+    /**
+     * current user logged in
+     */
     @FXML
     void CreateAlbumFromResultsButtonClicked(ActionEvent event) throws FileNotFoundException 
     {
@@ -90,7 +113,10 @@ public class Search_View_Controller
             e.printStackTrace();
         }
     }
-
+    /**
+     * Transitions user back to the login view
+     * @param event Button clicked
+     */
     @FXML
     void LogoutButtonClicked(ActionEvent event) 
     {
@@ -109,7 +135,10 @@ public class Search_View_Controller
             e.printStackTrace();
         }
     }
-
+    /**
+     * Transitions user back to the user view
+     * @param event Button clicked
+     */
     @FXML
     void ReturnButtonClicked(ActionEvent event) 
     {
@@ -131,7 +160,10 @@ public class Search_View_Controller
             e.printStackTrace();
         }
     }
-
+    /**
+     * Searches all photos of {@link #currentUser currentUser} by the date of {@link #SearchInputTextField SearchInputTextField}
+     * @param event Button clicked
+     */
     @FXML
     void SearchByDateButtonClicked(ActionEvent event) 
     {
@@ -189,7 +221,10 @@ public class Search_View_Controller
         SearchedPhotosListView.setItems(observablePhotos);
         SearchInputTextField.clear();
     }
-
+    /**
+     * Searches all photos of {@link #currentUser currentUser} by the name of {@link #SearchInputTextField SearchInputTextField}
+     * @param event Button clicked
+     */
     @FXML
     void SearchByNameButtonClicked(ActionEvent event) 
     {
@@ -247,7 +282,10 @@ public class Search_View_Controller
         SearchedPhotosListView.setItems(observablePhotos);
         SearchInputTextField.clear();
     }
-
+    /**
+     * Searches all photos of {@link #currentUser currentUser} by the tag of {@link #SearchInputTextField SearchInputTextField}
+     * @param event Button clicked
+     */
     @FXML
     void SearchByTagButtonClicked(ActionEvent event) 
     {
